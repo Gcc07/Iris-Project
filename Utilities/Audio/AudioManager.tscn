@@ -1,7 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://dygk5a7g1wqk7"]
+[gd_scene load_steps=30 format=3 uid="uid://dygk5a7g1wqk7"]
 
 [ext_resource type="Script" uid="uid://cbfqmshc8t35k" path="res://Utilities/Audio/AudioManager.gd" id="1_ilgda"]
-[ext_resource type="Script" uid="uid://dwm1drlnk2yp1" path="res://Global/Resources/sound_effect.gd" id="2_cr1dt"]
+[ext_resource type="Script" uid="uid://dwm1drlnk2yp1" path="res://Utilities/Audio/Resources/sound_effect.gd" id="2_cr1dt"]
 [ext_resource type="AudioStream" uid="uid://bi27jayifg055" path="res://Assets/Audio/SFX/Attack1.mp3" id="3_4an1w"]
 [ext_resource type="AudioStream" uid="uid://d2rweje61iw63" path="res://Assets/Audio/SFX/Parry.mp3" id="3_felhm"]
 [ext_resource type="AudioStream" uid="uid://0iaku0gpdk2b" path="res://Assets/Audio/SFX/Attack2.mp3" id="4_u2g5c"]
@@ -101,7 +101,7 @@ script = ExtResource("2_cr1dt")
 limit = 1
 type = 8
 sound_effect = ExtResource("11_sth7c")
-volume = 0.0
+volume = -5.0
 pitch_scale = 1.0
 pitch_randomness = 0.0
 metadata/_custom_type_script = "uid://dwm1drlnk2yp1"
@@ -111,7 +111,7 @@ script = ExtResource("2_cr1dt")
 limit = 1
 type = 8
 sound_effect = ExtResource("12_hlk4n")
-volume = 0.0
+volume = -5.0
 pitch_scale = 1.0
 pitch_randomness = 0.0
 metadata/_custom_type_script = "uid://dwm1drlnk2yp1"
@@ -121,7 +121,7 @@ script = ExtResource("2_cr1dt")
 limit = 1
 type = 10
 sound_effect = ExtResource("13_yr3jr")
-volume = 0.0
+volume = -5.0
 pitch_scale = 1.0
 pitch_randomness = 0.0
 metadata/_custom_type_script = "uid://dwm1drlnk2yp1"
@@ -131,7 +131,7 @@ script = ExtResource("2_cr1dt")
 limit = 1
 type = 11
 sound_effect = ExtResource("14_10axg")
-volume = 0.0
+volume = -5.0
 pitch_scale = 1.0
 pitch_randomness = 0.0
 metadata/_custom_type_script = "uid://dwm1drlnk2yp1"
@@ -141,6 +141,15 @@ script = ExtResource("2_cr1dt")
 limit = 5
 type = 12
 sound_effect = ExtResource("15_wwnf6")
+volume = -5.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://dwm1drlnk2yp1"
+
+[sub_resource type="Resource" id="Resource_sth7c"]
+script = ExtResource("2_cr1dt")
+limit = 5
+type = 0
 volume = 0.0
 pitch_scale = 1.0
 pitch_randomness = 0.0
@@ -148,4 +157,4 @@ metadata/_custom_type_script = "uid://dwm1drlnk2yp1"
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_ilgda")
-sound_effects = Array[ExtResource("2_cr1dt")]([SubResource("Resource_cr1dt"), SubResource("Resource_felhm"), SubResource("Resource_4an1w"), SubResource("Resource_x33k7"), SubResource("Resource_ox3qb"), SubResource("Resource_g67oo"), SubResource("Resource_j0dya"), SubResource("Resource_dk5ci"), SubResource("Resource_txfnm"), SubResource("Resource_1vbnq"), SubResource("Resource_kwts1"), SubResource("Resource_vjr6v"), SubResource("Resource_vmwqx")])
+sound_effects = Array[ExtResource("2_cr1dt")]([SubResource("Resource_cr1dt"), SubResource("Resource_felhm"), SubResource("Resource_4an1w"), SubResource("Resource_x33k7"), SubResource("Resource_ox3qb"), SubResource("Resource_g67oo"), SubResource("Resource_j0dya"), SubResource("Resource_dk5ci"), SubResource("Resource_txfnm"), SubResource("Resource_1vbnq"), SubResource("Resource_kwts1"), SubResource("Resource_vjr6v"), SubResource("Resource_vmwqx"), SubResource("Resource_sth7c")])

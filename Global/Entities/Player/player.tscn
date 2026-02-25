@@ -1,9 +1,9 @@
-[gd_scene load_steps=32 format=4 uid="uid://cly0gxqkuoiej"]
+[gd_scene load_steps=31 format=4 uid="uid://cly0gxqkuoiej"]
 
 [ext_resource type="Script" uid="uid://dk4dgxmfagupv" path="res://Global/Entities/Player/player.gd" id="1_kty55"]
 [ext_resource type="AnimationLibrary" uid="uid://dd4yvq0oqh767" path="res://Global/Entities/Player/Animations/PlayerAction.res" id="2_y8nmg"]
 [ext_resource type="Script" uid="uid://b423telj4t1ps" path="res://Global/Entities/Player/player_move_component.gd" id="3_5a672"]
-[ext_resource type="Material" uid="uid://dad2q3m7wbttr" path="res://Global/Entities/Shaders/entity_shader.tres" id="3_6ctnb"]
+[ext_resource type="Material" uid="uid://dad2q3m7wbttr" path="res://Assets/Shaders/entity_shader.tres" id="3_6ctnb"]
 [ext_resource type="AnimationLibrary" uid="uid://bn7c4qjgnvlcx" path="res://Global/Entities/Player/Animations/PlayerMove.res" id="3_sa4b0"]
 [ext_resource type="Texture2D" uid="uid://ccjwagyri34kn" path="res://Assets/Art/Characters/Renji_horozontal.png" id="4_ffmis"]
 [ext_resource type="Script" uid="uid://drxj12esmfjyt" path="res://Global/Entities/Player/player_action_component.gd" id="4_ywbxx"]
@@ -14,15 +14,20 @@
 [ext_resource type="Script" uid="uid://bybtb1c113b3d" path="res://Global/Entities/PublicStates/Movement/idle.gd" id="9_3wfp4"]
 [ext_resource type="Script" uid="uid://bnycl8fb3yooy" path="res://Global/Entities/PublicStates/Movement/jump.gd" id="10_6iif7"]
 [ext_resource type="PackedScene" uid="uid://07qnueve2in3" path="res://Global/Entities/StateMachines/action_state_machine.tscn" id="11_8c3ms"]
-[ext_resource type="Resource" uid="uid://ty7lccs3t5lg" path="res://Global/Projectiles/Resources/slash_projectile_resource.tres" id="18_2wpic"]
 [ext_resource type="PackedScene" uid="uid://jmnf0fy8c8di" path="res://Global/Classes/hitbox.tscn" id="18_3h6te"]
+[ext_resource type="Resource" uid="uid://ty7lccs3t5lg" path="res://Global/Projectiles/Resources/slash_projectile_resource.tres" id="18_6ctnb"]
 [ext_resource type="Script" uid="uid://bf0r8p5y4wwp8" path="res://Global/Entities/PublicStates/Action/Attack/attack_state.gd" id="18_quk2k"]
 [ext_resource type="Script" uid="uid://ch13tt26l8qwb" path="res://Global/Projectiles/Resources/projectile_resource.gd" id="18_r275i"]
+[ext_resource type="Resource" uid="uid://cpi4fe1j2ej4a" path="res://Global/Projectiles/Resources/heavy_slash_projectile_resource.tres" id="19_ffmis"]
 [ext_resource type="Script" uid="uid://y4rs71ay7bna" path="res://Global/Entities/PublicStates/Action/death_action_state.gd" id="21_5fg26"]
 [ext_resource type="Script" uid="uid://swrkuwy8kc7r" path="res://Global/Entities/PublicStates/Action/none_action_state.gd" id="21_quk2k"]
 [ext_resource type="Resource" uid="uid://cxf07rhee62gt" path="res://Global/Projectiles/Resources/energy_blast_projectile_resource.tres" id="22_6ctnb"]
 [ext_resource type="Script" uid="uid://c4e6rqyq4730p" path="res://Global/Entities/PublicStates/Action/parry_state.gd" id="24_ffmis"]
 [ext_resource type="Script" uid="uid://dyapo17frowtf" path="res://Global/Entities/PublicStates/Action/stunned_action_state.gd" id="25_6ctnb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_quk2k"]
+radius = 5.0
+height = 14.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rjofx"]
 radius = 7.0
@@ -56,43 +61,6 @@ sampling_rate = 44100.0
 [sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_6ctnb"]
 packet_sequence = SubResource("OggPacketSequence_dp0kl")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r275i"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_quk2k"]
-radius = 2.0
-height = 10.0
-
-[sub_resource type="Resource" id="Resource_6ctnb"]
-script = ExtResource("18_r275i")
-ID = "Heavy Slash"
-stick_to_parent = true
-is_friendly = true
-damage = 3.0
-stuns = true
-max_pierce = 1
-time_to_live = 0.2
-collision_shape = SubResource("CapsuleShape2D_r275i")
-hurtbox_shape = SubResource("CapsuleShape2D_quk2k")
-rotate_collision_shape = 0.0
-rotate_hurtbox_shape = 90.0
-collision_size_corresponds_to_sprite = true
-hurtbox_size_corresponds_to_sprite = true
-breaks_on_collision = false
-sprite_texture = "uid://bgu0xph64jq36"
-num_of_frames = 3
-animation_is_continous = false
-has_animation = true
-parent_offset = Vector2(-13, -18)
-scale_factor = Vector2(1, 1)
-initial_velocity = Vector2(0, 0)
-affected_by_gravity = false
-speed = 0.0
-acceleration = 0.0
-spin_speed = 0.0
-modulate_color = Color(255, 255, 255, 255)
-modulate_outline_color = Color(0.106, 0.122, 0.129, 1)
-metadata/_custom_type_script = "uid://ch13tt26l8qwb"
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 128
 script = ExtResource("1_kty55")
@@ -101,6 +69,9 @@ entity_id = "Player"
 [node name="Hitbox" parent="." instance=ExtResource("18_3h6te")]
 position = Vector2(0, -7)
 collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_quk2k")
 
 [node name="GroundCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
@@ -177,6 +148,7 @@ animation_name = "move"
 script = ExtResource("8_h88bi")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
+move_speed = 160.0
 animation_name = "fall"
 
 [node name="idle" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
@@ -184,7 +156,8 @@ script = ExtResource("9_3wfp4")
 fall_state = NodePath("../fall")
 jump_state = NodePath("../jump")
 move_state = NodePath("../move")
-state_sound = 10
+move_speed = 0.0
+state_sound = 1
 animation_name = "idle"
 
 [node name="jump" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
@@ -202,7 +175,7 @@ starting_state = NodePath("none")
 script = ExtResource("18_quk2k")
 allow_movement = true
 none_state = NodePath("../none")
-attack_projectile_resource = ExtResource("18_2wpic")
+attack_projectile_resources = Array[ExtResource("18_r275i")]([ExtResource("18_6ctnb")])
 death_state = NodePath("../death")
 stunned_state = NodePath("../stunned")
 state_sound = 7
@@ -211,7 +184,7 @@ animation_name = "light_attack"
 [node name="heavy" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
 script = ExtResource("18_quk2k")
 none_state = NodePath("../none")
-attack_projectile_resource = SubResource("Resource_6ctnb")
+attack_projectile_resources = Array[ExtResource("18_r275i")]([ExtResource("19_ffmis")])
 death_state = NodePath("../death")
 stunned_state = NodePath("../stunned")
 state_sound = 6
@@ -220,7 +193,7 @@ animation_name = "heavy_attack"
 [node name="special" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
 script = ExtResource("18_quk2k")
 none_state = NodePath("../none")
-attack_projectile_resource = ExtResource("22_6ctnb")
+attack_projectile_resources = Array[ExtResource("18_r275i")]([ExtResource("22_6ctnb")])
 death_state = NodePath("../death")
 stunned_state = NodePath("../stunned")
 state_sound = 5
@@ -244,7 +217,7 @@ animation_name = "death"
 [node name="stunned" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
 script = ExtResource("25_6ctnb")
 none_state = NodePath("../none")
-stun_time = 0.05
+stun_time = 0.1
 death_state = NodePath("../death")
 stunned_state = NodePath(".")
 animation_name = "stunned"

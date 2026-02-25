@@ -12,6 +12,7 @@ func get_throw_attack_input() -> bool:
 func _on_hitbox_damaged(attack: Attack):
 	if attack.stuns == true:
 		parent.stunned = true
+	print("juicy!")
 
 
 func process_physics(delta: float) -> ActionState:

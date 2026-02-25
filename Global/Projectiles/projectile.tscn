@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=3 uid="uid://be3mpsirj8rwt"]
 
-[ext_resource type="Script" uid="uid://dq8rg7w5y8i6a" path="res://Global/Projectiles/projectile.gd" id="1_x0qej"]
-[ext_resource type="Script" uid="uid://ch13tt26l8qwb" path="res://Global/Projectiles/Resources/projectile_resource.gd" id="2_joau3"]
-[ext_resource type="Script" uid="uid://cg3qeta413pu0" path="res://Global/Classes/hurtbox.gd" id="3_1lnlt"]
-[ext_resource type="Material" uid="uid://dad2q3m7wbttr" path="res://Global/Entities/Shaders/entity_shader.tres" id="3_6kw5c"]
+[ext_resource type="Script" uid="uid://dq8rg7w5y8i6a" path="res://Global/Projectiles/projectile.gd" id="1_bc6xr"]
+[ext_resource type="Script" uid="uid://ch13tt26l8qwb" path="res://Global/Projectiles/Resources/projectile_resource.gd" id="2_gdlc3"]
+[ext_resource type="Material" uid="uid://dad2q3m7wbttr" path="res://Assets/Shaders/entity_shader.tres" id="3_g8pnk"]
+[ext_resource type="Script" uid="uid://cg3qeta413pu0" path="res://Global/Classes/hurtbox.gd" id="4_mdg15"]
 
 [sub_resource type="Resource" id="Resource_6kw5c"]
 resource_local_to_scene = true
-script = ExtResource("2_joau3")
+script = ExtResource("2_gdlc3")
 ID = ""
 stick_to_parent = false
 is_friendly = true
@@ -45,7 +45,7 @@ gravity = Vector3(0, 98, 0)
 collision_layer = 4
 collision_mask = 128
 safe_margin = 3.363
-script = ExtResource("1_x0qej")
+script = ExtResource("1_bc6xr")
 hurtbox = NodePath("ProjectileHurtbox")
 timer = NodePath("Timer")
 sprite = NodePath("Sprite2D")
@@ -55,7 +55,7 @@ projectile_resource = SubResource("Resource_6kw5c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 2
-material = ExtResource("3_6kw5c")
+material = ExtResource("3_g8pnk")
 texture = SubResource("PlaceholderTexture2D_y6bbh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -65,7 +65,7 @@ debug_color = Color(0.228855, 0.508907, 1, 0.42)
 [node name="ProjectileHurtbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 3
-script = ExtResource("3_1lnlt")
+script = ExtResource("4_mdg15")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHurtbox"]
 debug_color = Color(0.910174, 0.248337, 0.423644, 0.42)

@@ -7,6 +7,7 @@ var move_component
 
 func enter() -> void:
 	moveAnimations.play(str(parent.entity_id)+"Move/" + animation_name)
+	
 
 func get_movement_input() -> float:
 	if parent.can_move:

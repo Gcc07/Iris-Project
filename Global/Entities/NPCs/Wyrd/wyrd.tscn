@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cv300ogata8cn" path="res://Global/Entities/NPCs/Wyrd/wyrd_npc.gd" id="1_ilor2"]
 [ext_resource type="PackedScene" uid="uid://jmnf0fy8c8di" path="res://Global/Classes/hitbox.tscn" id="2_gov7c"]
-[ext_resource type="Texture2D" uid="uid://c2feqr35ca5m0" path="res://Assets/Art/K2 Idle-Sheet.png" id="3_biyvt"]
+[ext_resource type="Texture2D" uid="uid://c2feqr35ca5m0" path="res://Assets/Art/Concept/K2 Idle-Sheet.png" id="3_biyvt"]
 [ext_resource type="PackedScene" uid="uid://c2njkfc01sgji" path="res://Global/Entities/StateMachines/move_state_machine.tscn" id="4_6angc"]
 [ext_resource type="AnimationLibrary" uid="uid://dy7jyd6nyl7qc" path="res://Global/Entities/NPCs/Wyrd/Animations/WyrdMove.res" id="4_biyvt"]
 [ext_resource type="Script" uid="uid://vdwjy5ar2b6m" path="res://Global/Entities/PublicStates/Movement/move.gd" id="5_yc1lo"]

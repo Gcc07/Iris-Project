@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://gt1mvc2fp3ea"]
 
 [ext_resource type="Script" uid="uid://c6yhphs43b5t3" path="res://tmp/Spawner.gd" id="1_7ryqh"]
-[ext_resource type="Texture2D" uid="uid://cg8yqe1xmvqq0" path="res://Assets/Art/Spawn.png" id="2_7ryqh"]
+[ext_resource type="Texture2D" uid="uid://cg8yqe1xmvqq0" path="res://Assets/Art/UI/Spawn.png" id="2_7ryqh"]
 
 [node name="Entity Spawner" type="Control"]
 layout_mode = 3

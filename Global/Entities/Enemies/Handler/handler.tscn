@@ -1,7 +1,7 @@
-[gd_scene load_steps=51 format=3 uid="uid://cqxlfhln76dxm"]
+[gd_scene load_steps=50 format=3 uid="uid://cqxlfhln76dxm"]
 
 [ext_resource type="Script" uid="uid://bkg1iossc3cto" path="res://Global/Entities/Enemies/Handler/handler.gd" id="1_5xbvj"]
-[ext_resource type="Material" uid="uid://dad2q3m7wbttr" path="res://Global/Entities/Shaders/entity_shader.tres" id="1_d8ri2"]
+[ext_resource type="Material" uid="uid://dad2q3m7wbttr" path="res://Assets/Shaders/entity_shader.tres" id="1_d8ri2"]
 [ext_resource type="Script" uid="uid://d0m28cl6gml5p" path="res://Global/Entities/Components/health_component.gd" id="2_7necc"]
 [ext_resource type="Script" uid="uid://cql8acbpetak4" path="res://Global/Entities/Enemies/Enemy/UniqueComponents/enemy_move_component.gd" id="3_w41fc"]
 [ext_resource type="Texture2D" uid="uid://dsb6tv6epn1mh" path="res://Assets/Art/Characters/Handler-sheet.png" id="4_gp4px"]
@@ -14,13 +14,17 @@
 [ext_resource type="Script" uid="uid://bnycl8fb3yooy" path="res://Global/Entities/PublicStates/Movement/jump.gd" id="13_ajt4j"]
 [ext_resource type="Script" uid="uid://bf0r8p5y4wwp8" path="res://Global/Entities/PublicStates/Action/Attack/attack_state.gd" id="14_mimb8"]
 [ext_resource type="Script" uid="uid://dyrygqjk1mao2" path="res://Global/Entities/PublicStates/Movement/fall.gd" id="14_qku7y"]
-[ext_resource type="Resource" uid="uid://dj8ruv3xql0hy" path="res://Global/Projectiles/Resources/down_slash.tres" id="15_mypf7"]
 [ext_resource type="Script" uid="uid://dwydmtbkvq638" path="res://Global/Entities/Components/health_label.gd" id="15_p2dqc"]
 [ext_resource type="Script" uid="uid://y4rs71ay7bna" path="res://Global/Entities/PublicStates/Action/death_action_state.gd" id="16_44duj"]
 [ext_resource type="Script" uid="uid://ch13tt26l8qwb" path="res://Global/Projectiles/Resources/projectile_resource.gd" id="16_o053h"]
+[ext_resource type="Resource" uid="uid://cj7v1mks3os17" path="res://Global/Projectiles/Resources/ground_chunk_projectile.tres" id="17_d8ri2"]
+[ext_resource type="Resource" uid="uid://dj8ruv3xql0hy" path="res://Global/Projectiles/Resources/down_slash.tres" id="17_ldva7"]
 [ext_resource type="Script" uid="uid://c78hv42ji8xp1" path="res://Global/Entities/Enemies/Handler/UniqueStates/handler_none_state.gd" id="17_o053h"]
 [ext_resource type="Script" uid="uid://dyapo17frowtf" path="res://Global/Entities/PublicStates/Action/stunned_action_state.gd" id="19_necso"]
 [ext_resource type="Script" uid="uid://oxkcfursfdns" path="res://Global/Entities/Enemies/Handler/UniqueStates/notice_action_state.gd" id="20_o053h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8ri2"]
+radius = 3.7006
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_etp55"]
 radius = 60.0
@@ -380,42 +384,6 @@ shader_parameter/shade_color = Color(1, 1, 1, 0)
 radius = 7.0
 height = 14.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_d8ri2"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ldva7"]
-
-[sub_resource type="Resource" id="Resource_8x5ex"]
-resource_local_to_scene = true
-script = ExtResource("16_o053h")
-ID = "Ground"
-stick_to_parent = false
-is_friendly = false
-damage = 3.0
-stuns = true
-max_pierce = 1
-time_to_live = 3.0
-collision_shape = SubResource("CircleShape2D_d8ri2")
-hurtbox_shape = SubResource("CircleShape2D_ldva7")
-rotate_collision_shape = 0.0
-rotate_hurtbox_shape = 0.0
-collision_size_corresponds_to_sprite = true
-hurtbox_size_corresponds_to_sprite = true
-breaks_on_collision = false
-sprite_texture = "uid://cqnbr1gvb8h73"
-num_of_frames = 1
-animation_is_continous = true
-has_animation = false
-parent_offset = Vector2(-10, -10)
-scale_factor = Vector2(1, 1)
-initial_velocity = Vector2(0, 0)
-affected_by_gravity = true
-speed = 100.0
-acceleration = 0.0
-spin_speed = 3.0
-modulate_color = Color(0.105882, 0.121569, 0.129412, 1)
-modulate_outline_color = Color(0.25098, 0.286275, 0.45098, 1)
-metadata/_custom_type_script = "uid://ch13tt26l8qwb"
-
 [node name="Handler" type="CharacterBody2D" groups=["enemy"]]
 material = ExtResource("1_d8ri2")
 collision_layer = 2
@@ -430,6 +398,9 @@ position = Vector2(0, -7)
 scale = Vector2(3, 2)
 collision_layer = 2
 collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_d8ri2")
 
 [node name="AttentionBox" type="Area2D" parent="."]
 collision_layer = 0
@@ -583,6 +554,7 @@ animation_name = "jump"
 script = ExtResource("14_qku7y")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
+move_speed = 50.0
 animation_name = "fall"
 
 [node name="ActionStateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("6_4i0jk")]
@@ -591,7 +563,7 @@ starting_state = NodePath("none")
 [node name="light" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
 script = ExtResource("14_mimb8")
 none_state = NodePath("../none")
-attack_projectile_resource = ExtResource("15_mypf7")
+attack_projectile_resources = Array[ExtResource("16_o053h")]([ExtResource("17_ldva7")])
 death_state = NodePath("../death")
 stunned_state = NodePath("../stunned")
 animation_name = "light_attack"
@@ -599,7 +571,7 @@ animation_name = "light_attack"
 [node name="throw" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
 script = ExtResource("14_mimb8")
 none_state = NodePath("../none")
-attack_projectile_resource = SubResource("Resource_8x5ex")
+attack_projectile_resources = Array[ExtResource("16_o053h")]([ExtResource("17_d8ri2")])
 death_state = NodePath("../death")
 stunned_state = NodePath("../stunned")
 animation_name = "throw_attack"

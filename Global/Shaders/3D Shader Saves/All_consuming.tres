@@ -1,8 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://4cg5kmb8x2o7"]
-
-[ext_resource type="Shader" uid="uid://dthmnrh13cpkn" path="res://Global/Shaders/3DSlash.gdshader" id="1_psbob"]
-
-[resource]
-shader = ExtResource("1_psbob")
-shader_parameter/brightness = 2.5
-shader_parameter/time_scale = 0.5

@@ -25,9 +25,10 @@ func enter() -> void:
 	
 
 func _on_timer_timeout():
-	get_child(0).queue_free()
 	parry_finished = true
 	parent.parrying = false
+	get_child(0).queue_free()
+	
 
 
 func process_physics(delta: float) -> ActionState:

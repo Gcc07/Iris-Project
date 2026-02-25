@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://coi28ed57xk3v"]
 
 [ext_resource type="Shader" uid="uid://1qgomy1ob5j" path="res://Global/Shaders/electric.gdshader" id="1_juqt2"]
-[ext_resource type="Shader" uid="uid://njvlweebk5iw" path="res://Global/Scenes/crt.gdshader" id="2_iqity"]
-[ext_resource type="Texture2D" uid="uid://bnduq2lxy6ry2" path="res://Assets/Art/Entropy.png" id="2_pcqml"]
+[ext_resource type="Shader" uid="uid://njvlweebk5iw" path="res://Assets/Shaders/crt.gdshader" id="2_iqity"]
+[ext_resource type="Texture2D" uid="uid://bnduq2lxy6ry2" path="res://Assets/Art/Concept/Entropy.png" id="2_pcqml"]
 [ext_resource type="Script" uid="uid://u1nce6x1qvai" path="res://tmp/eye_of_entropy.gd" id="4_0ours"]
 [ext_resource type="Shader" uid="uid://bj4qqcw03j4qq" path="res://Global/Shaders/main.gdshader" id="4_juucd"]
 [ext_resource type="Script" uid="uid://drh8v0kxbljwe" path="res://tmp/zoom.gd" id="5_p75ce"]

@@ -1,14 +1,9 @@
-[gd_scene load_steps=25 format=4 uid="uid://c5hvh64y4o77c"]
+[gd_scene load_steps=12 format=4 uid="uid://c5hvh64y4o77c"]
 
-[ext_resource type="Texture2D" uid="uid://cuip4hetwmctt" path="res://Assets/Art/TMAP.png" id="1_3ptaa"]
+[ext_resource type="Texture2D" uid="uid://cuip4hetwmctt" path="res://Assets/Art/Tilesets/TMAP.png" id="1_3ptaa"]
 [ext_resource type="PackedScene" uid="uid://cly0gxqkuoiej" path="res://Global/Entities/Player/player.tscn" id="2_w0ego"]
-[ext_resource type="Texture2D" uid="uid://dlmaqaklw4s14" path="res://Assets/Art/TestEnv.png" id="3_kvelk"]
+[ext_resource type="Texture2D" uid="uid://dlmaqaklw4s14" path="res://Assets/Art/Concept/TestEnv.png" id="3_kvelk"]
 [ext_resource type="PackedScene" uid="uid://cqxlfhln76dxm" path="res://Global/Entities/Enemies/Handler/handler.tscn" id="5_dknhj"]
-[ext_resource type="Shader" uid="uid://bc76mt2ul2vur" path="res://Global/Shaders/god_rays.gdshader" id="5_uitgq"]
-[ext_resource type="Material" uid="uid://dfqms2oor14rt" path="res://Global/Shaders/White Burning.tres" id="6_tkgxt"]
-[ext_resource type="Script" uid="uid://dv53vfm7dn6p3" path="res://Global/Scenes/fps.gd" id="7_jbbcs"]
-[ext_resource type="Shader" uid="uid://bj4qqcw03j4qq" path="res://Global/Shaders/main.gdshader" id="8_6f08s"]
-[ext_resource type="PackedScene" uid="uid://gt1mvc2fp3ea" path="res://tmp/entity_spawner.tscn" id="9_f7wqt"]
 [ext_resource type="PackedScene" uid="uid://c7ibdequcmxh4" path="res://Global/Entities/NPCs/Wyrd/wyrd.tscn" id="9_jbbcs"]
 [ext_resource type="Script" uid="uid://c7vi47ybajeqd" path="res://Global/Entities/Player/player_camera.gd" id="10_8n0gi"]
 
@@ -134,15 +129,6 @@ shader_parameter/alpha_threshold = 0.0
 shader_parameter/outline_samples = 8
 shader_parameter/shade_color = Color(1, 1, 1, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8mjdq"]
-resource_local_to_scene = true
-shader = SubResource("Shader_t0tcr")
-shader_parameter/outline_color = Color(0.105882, 0.121569, 0.129412, 1)
-shader_parameter/outline_size = 1.0
-shader_parameter/alpha_threshold = 0.0
-shader_parameter/outline_samples = 8
-shader_parameter/shade_color = Color(1, 1, 1, 0)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f7wqt"]
 resource_local_to_scene = true
 shader = SubResource("Shader_t0tcr")
@@ -151,39 +137,6 @@ shader_parameter/outline_size = 1.0
 shader_parameter/alpha_threshold = 0.0
 shader_parameter/outline_samples = 8
 shader_parameter/shade_color = Color(1, 1, 1, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pomkq"]
-shader = ExtResource("5_uitgq")
-shader_parameter/angle = 0.1
-shader_parameter/position = 0.0
-shader_parameter/spread = 0.112
-shader_parameter/cutoff = 0.28
-shader_parameter/falloff = 0.675
-shader_parameter/edge_fade = 0.322
-shader_parameter/speed = 1.0
-shader_parameter/ray1_density = 21.0
-shader_parameter/ray2_density = 20.0
-shader_parameter/ray2_intensity = 0.135
-shader_parameter/color = Color(0.888279, 0.718438, 0.662146, 0.8)
-shader_parameter/hdr = true
-shader_parameter/seed = 1.0
-
-[sub_resource type="Gradient" id="Gradient_rclih"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_mtg60"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7ewiv"]
-color_ramp = SubResource("Gradient_rclih")
-noise = SubResource("FastNoiseLite_mtg60")
-
-[sub_resource type="SystemFont" id="SystemFont_jbbcs"]
-subpixel_positioning = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_jbbcs"]
-font = SubResource("SystemFont_jbbcs")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbbcs"]
-shader = ExtResource("8_6f08s")
 
 [node name="Game" type="Node2D"]
 
@@ -201,73 +154,9 @@ position = Vector2(240, 135)
 material = SubResource("ShaderMaterial_8n0gi")
 position = Vector2(115, 218)
 
-[node name="Handler3" parent="." instance=ExtResource("5_dknhj")]
-material = SubResource("ShaderMaterial_8mjdq")
-position = Vector2(342, 85)
-
 [node name="Handler2" parent="." instance=ExtResource("5_dknhj")]
 material = SubResource("ShaderMaterial_f7wqt")
-position = Vector2(344, 216)
-
-[node name="GodRays" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_pomkq")
-position = Vector2(258, 170)
-scale = Vector2(0.439697, 0.437256)
-texture = SubResource("NoiseTexture2D_7ewiv")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 768.0
-offset_top = -19.0
-offset_right = 2048.0
-offset_bottom = 701.0
-mouse_filter = 1
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
-layer = -1
-
-[node name="Label" type="Label" parent="Control/CanvasLayer"]
-offset_left = 410.0
-offset_top = 5.0
-offset_right = 434.0
-offset_bottom = 48.0
-text = "fps"
-label_settings = SubResource("LabelSettings_jbbcs")
-script = ExtResource("7_jbbcs")
-
-[node name="Cool Burning White" type="ColorRect" parent="Control/CanvasLayer"]
-visible = false
-material = ExtResource("6_tkgxt")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -2.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Cool Burning White2" type="ColorRect" parent="Control/CanvasLayer"]
-visible = false
-material = SubResource("ShaderMaterial_jbbcs")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -2.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Entity Spawner" parent="Control" instance=ExtResource("9_f7wqt")]
-layout_mode = 1
-offset_left = -673.0
-offset_top = 144.0
-offset_right = -673.0
-offset_bottom = 144.0
+position = Vector2(345, 84)
 
 [node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("10_8n0gi")

@@ -1,41 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgty8b66q3gid"]
+[gd_scene load_steps=5 format=3 uid="uid://dgty8b66q3gid"]
 
-[ext_resource type="PackedScene" uid="uid://c5hvh64y4o77c" path="res://Global/Scenes/main.tscn" id="1_66get"]
-[ext_resource type="Shader" uid="uid://b2q4e314nkt1p" path="res://Global/Scenes/subpixel_filter.gdshader" id="1_of4ps"]
-[ext_resource type="Texture2D" uid="uid://bl3ahlg8fif5s" path="res://Assets/Art/UI.png" id="3_43hae"]
-[ext_resource type="Script" uid="uid://cd7xc4daxs03y" path="res://Global/Entities/Player/player_data.gd" id="4_cblbx"]
+[ext_resource type="PackedScene" uid="uid://c5hvh64y4o77c" path="res://Global/Scenes/Main.tscn" id="1_66get"]
+[ext_resource type="Shader" uid="uid://b2q4e314nkt1p" path="res://Assets/Shaders/subpixel_filter.gdshader" id="1_of4ps"]
+[ext_resource type="PackedScene" uid="uid://dp25ebfh2jmkm" path="res://Global/Scenes/UI/PlayerUI.tscn" id="3_xknwu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xknwu"]
 shader = ExtResource("1_of4ps")
 shader_parameter/cam_offset = Vector2(0, 0)
 
-[sub_resource type="Gradient" id="Gradient_6ctnb"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lrljd"]
-gradient = SubResource("Gradient_6ctnb")
-width = 32
-height = 2
-
-[sub_resource type="Gradient" id="Gradient_ffmis"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.901961, 0.270588, 0.223529, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2ywiu"]
-gradient = SubResource("Gradient_ffmis")
-width = 32
-height = 2
-
-[node name="Smoothfix" type="Node2D"]
+[node name="Smoothfix" type="Control"]
+layout_mode = 3
+anchor_right = 1.99375
+anchor_bottom = 2.0037
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_xknwu")
+layout_mode = 0
 offset_left = -4.0
 offset_top = 4.0
-offset_right = 478.0
-offset_bottom = 276.0
+offset_right = 956.0
+offset_bottom = 544.0
 scale = Vector2(4, 4)
 size_flags_horizontal = 0
 
@@ -50,12 +38,17 @@ texture_filter = 1
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="."]
 texture_filter = 1
-offset_left = -4.0
-offset_top = 4.0
-offset_right = 478.0
-offset_bottom = 276.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 4.0
+anchor_bottom = 4.0
+offset_right = -11484.0
+offset_bottom = -6491.99
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(4, 4)
 size_flags_horizontal = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer2"]
 transparent_bg = true
@@ -63,52 +56,4 @@ handle_input_locally = false
 size = Vector2i(480, 270)
 render_target_update_mode = 4
 
-[node name="HUD" type="CanvasLayer" parent="SubViewportContainer2/SubViewport"]
-
-[node name="Player Data" type="TextureRect" parent="SubViewportContainer2/SubViewport/HUD"]
-texture_filter = 1
-offset_right = 82.0
-offset_bottom = 25.0
-scale = Vector2(2, 2)
-texture = ExtResource("3_43hae")
-stretch_mode = 4
-script = ExtResource("4_cblbx")
-
-[node name="ChangeEffectBar" type="TextureProgressBar" parent="SubViewportContainer2/SubViewport/HUD/Player Data"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.25
-anchor_top = 0.435
-anchor_right = 0.25
-anchor_bottom = 0.435
-offset_left = 9.5
-offset_top = 0.125
-offset_right = 45.5
-offset_bottom = 4.125
-max_value = 1000.0
-step = 0.0
-value = 10.0
-rounded = true
-texture_progress = SubResource("GradientTexture2D_lrljd")
-texture_progress_offset = Vector2(2, 1)
-
-[node name="HealthBar" type="TextureProgressBar" parent="SubViewportContainer2/SubViewport/HUD/Player Data"]
-z_index = 1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.25
-anchor_top = 0.435
-anchor_right = 0.25
-anchor_bottom = 0.435
-offset_left = 9.5
-offset_top = 0.125
-offset_right = 45.5
-offset_bottom = 4.125
-max_value = 10.0
-step = 0.0
-value = 10.0
-rounded = true
-texture_progress = SubResource("GradientTexture2D_2ywiu")
-texture_progress_offset = Vector2(2, 1)
+[node name="PlayerUI" parent="SubViewportContainer2/SubViewport" instance=ExtResource("3_xknwu")]

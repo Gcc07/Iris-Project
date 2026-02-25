@@ -24,5 +24,6 @@ func process_physics(delta: float) -> MovementState:
 		return null
 	# return null
 func exit():
+	play_sound()
 	pass
 	
