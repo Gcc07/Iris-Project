@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1ni4ev2i4io8"
-path="res://.godot/imported/RenjiRun-Sheet.png-ecdc702263c0faac44fe405a395965a6.ctex"
+uid="uid://dl2sjukha5yy1"
+path="res://.godot/imported/PlayerUIHealthCover.png-0fe68b895cd009f1cdd33476a1f0c176.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Characters/RenjiRun-Sheet.png"
-dest_files=["res://.godot/imported/RenjiRun-Sheet.png-ecdc702263c0faac44fe405a395965a6.ctex"]
+source_file="res://Assets/Art/UI/PlayerUIHealthCover.png"
+dest_files=["res://.godot/imported/PlayerUIHealthCover.png-0fe68b895cd009f1cdd33476a1f0c176.ctex"]
 
 [params]
 

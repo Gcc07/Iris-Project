@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp25ebfh2jmkm"]
+[gd_scene load_steps=6 format=3 uid="uid://dp25ebfh2jmkm"]
 
 [ext_resource type="Script" uid="uid://cd7xc4daxs03y" path="res://Global/Entities/Player/player_data.gd" id="1_84j6u"]
 [ext_resource type="Texture2D" uid="uid://dylwru3yvwn6d" path="res://Assets/Art/UI/PlayerUI.aseprite" id="1_flfsf"]
+[ext_resource type="Texture2D" uid="uid://dkcuw4fw6ouoa" path="res://Assets/Art/UI/Resources/health_gradient.tres" id="3_atsq0"]
+
+[sub_resource type="Gradient" id="Gradient_s50ei"]
+colors = PackedColorArray(0.227451, 0.247059, 0.368627, 1, 0.227451, 0.247059, 0.368627, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_af5ue"]
+gradient = SubResource("Gradient_s50ei")
+width = 145
+height = 6
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -10,17 +19,35 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
-[node name="Player Data" type="TextureRect" parent="."]
+[node name="Player Data" type="TextureRect" parent="." node_paths=PackedStringArray("healthBar")]
+z_index = 2
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.925926
-anchor_right = 0.11875
+anchor_top = 0.941667
+anchor_right = 0.0947917
 anchor_bottom = 1.0
 grow_vertical = 0
+pivot_offset = Vector2(0, 63)
 texture = ExtResource("1_flfsf")
 stretch_mode = 4
 script = ExtResource("1_84j6u")
+healthBar = NodePath("HealthBar")
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="TextureProgressBar" parent="Player Data"]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0824176
+anchor_top = 0.698413
+anchor_right = 0.879121
+anchor_bottom = 0.825397
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 10.0
+rounded = true
+texture_under = SubResource("GradientTexture2D_af5ue")
+texture_progress = ExtResource("3_atsq0")
 metadata/_edit_use_anchors_ = true

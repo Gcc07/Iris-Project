@@ -56,4 +56,6 @@ handle_input_locally = false
 size = Vector2i(480, 270)
 render_target_update_mode = 4
 
-[node name="PlayerUI" parent="SubViewportContainer2/SubViewport" instance=ExtResource("3_xknwu")]
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer2/SubViewport"]
+
+[node name="PlayerUI" parent="SubViewportContainer2/SubViewport/CanvasLayer" instance=ExtResource("3_xknwu")]

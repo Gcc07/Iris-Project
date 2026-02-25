@@ -1,30 +1,21 @@
 extends TextureRect
 
-var change_max_value_health_value_quotient : float
-var lerping : bool
+@export
+var healthBar : TextureProgressBar
+func _ready():
+	healthBar.visible = true
+	
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		var health_component : Health = player.get_node("HealthComponent") # Get player in tree
+		health_component.health_changed.connect(on_health_changed) # Get player health component
+		
+		healthBar.max_value = health_component.max_health # Set the health bar node's max value to the max player health
+		on_health_changed(health_component.max_health) # Set the health to the max health
 
-#func _ready():
-	#change_max_value_health_value_quotient = $ChangeEffectBar.max_value / $HealthBar.max_value
-#
-	#on_health_changed(20)
-	#$ChangeEffectBar.value = $HealthBar.value * change_max_value_health_value_quotient
-	#$ChangeEffectBar.visible = true
-#
-#func on_health_changed(new_health: float):
-	##text = "Health: " + str(new_health)
-#
-	#$HealthBar.value = new_health
-	#change_health_effect(new_health)
-	#
-#func change_health_effect(new_health: float):
-	#$ChangeEffectBar.visible = true
-	#lerping = true
-#
-#func _process(delta: float) -> void:
-	#if !lerping:
-		#return
-	#else:
-		#if $ChangeEffectBar.value- $HealthBar.value * change_max_value_health_value_quotient  > 1:
-			#$ChangeEffectBar.value = $ChangeEffectBar.value - 1
-		#else:
-			#lerping = false
+func on_health_changed(new_health: float):
+	healthBar.value = new_health
+	change_health_effect(new_health)
+	
+func change_health_effect(new_health: float):
+	healthBar.visible = true

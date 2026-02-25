@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cv300ogata8cn" path="res://Global/Entities/NPCs/Wyrd/wyrd_npc.gd" id="1_ilor2"]
 [ext_resource type="PackedScene" uid="uid://jmnf0fy8c8di" path="res://Global/Classes/hitbox.tscn" id="2_gov7c"]
-[ext_resource type="Texture2D" uid="uid://c2feqr35ca5m0" path="res://Assets/Art/Concept/K2 Idle-Sheet.png" id="3_biyvt"]
+[ext_resource type="SpriteFrames" uid="uid://djd8bsr3dc7d8" path="res://Assets/Art/Characters/K2 Idle.aseprite" id="3_biyvt"]
 [ext_resource type="PackedScene" uid="uid://c2njkfc01sgji" path="res://Global/Entities/StateMachines/move_state_machine.tscn" id="4_6angc"]
 [ext_resource type="AnimationLibrary" uid="uid://dy7jyd6nyl7qc" path="res://Global/Entities/NPCs/Wyrd/Animations/WyrdMove.res" id="4_biyvt"]
 [ext_resource type="Script" uid="uid://vdwjy5ar2b6m" path="res://Global/Entities/PublicStates/Movement/move.gd" id="5_yc1lo"]
@@ -99,7 +99,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -119,7 +119,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -131,7 +131,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/path = NodePath("AnimatedSprite2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -146,11 +146,10 @@ _data = {
 &"RESET": SubResource("Animation_hd8eq")
 }
 
-[node name="Wyrd" type="CharacterBody2D" node_paths=PackedStringArray("entity_sprite", "move_animations", "action_animations", "movement_state_machine", "move_component") groups=["npc"]]
+[node name="Wyrd" type="CharacterBody2D" node_paths=PackedStringArray("move_animations", "action_animations", "movement_state_machine", "move_component") groups=["npc"]]
 collision_layer = 8
 collision_mask = 128
 script = ExtResource("1_ilor2")
-entity_sprite = NodePath("Sprite2D")
 move_animations = NodePath("MoveAnimationPlayer")
 action_animations = NodePath("ActionAnimationPlayer")
 movement_state_machine = NodePath("MoveStateMachine")
@@ -173,11 +172,10 @@ position = Vector2(0, -10)
 collision_layer = 2
 collision_mask = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_48iat")
 position = Vector2(0, -25)
-texture = ExtResource("3_biyvt")
-hframes = 51
+sprite_frames = ExtResource("3_biyvt")
 
 [node name="GroundCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)

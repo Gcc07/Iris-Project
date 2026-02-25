@@ -49,6 +49,7 @@ func _on_jump_line_body_exited(body):
 func get_movement_direction() -> float:
 	var direction = Vector2(0,0)
 	var velocity_x = 0.0
+
 	if is_player_in_area:
 		direction = target.global_position - get_parent().global_position
 		velocity_x = snapped(direction.normalized().x,1)

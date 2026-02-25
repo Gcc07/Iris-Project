@@ -9,7 +9,7 @@ var current_state: ActionState
 # Initialize the state machine by giving each child (INDIVIDUAL STATE!) a ref
 # to the parent object (General Entity) it belongs to.
 
-func init(parent: CharacterBody2D, sprite: Sprite2D, moveAnimations: 
+func init(parent: CharacterBody2D, sprite: AnimatedSprite2D, moveAnimations: 
 	AnimationPlayer, actionAnimations: AnimationPlayer, action_component) -> void:
 	for child in get_children():
 		child.parent = parent

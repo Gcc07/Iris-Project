@@ -8,7 +8,7 @@ var state_sound : SoundEffect.SOUND_EFFECT_TYPE
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 ## The sprite of the entity
-var sprite: Sprite2D
+var sprite: AnimatedSprite2D
 ## The move animation player of the entity
 var moveAnimations: AnimationPlayer
 ## The action animation player of the entity

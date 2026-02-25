@@ -7,7 +7,7 @@ var aim_position : Vector2 = Vector2(1, 0)
 var attack_point = $AttackPoint
 
 @onready
-var entity_sprite : Sprite2D = $Sprite2D
+var entity_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready
 var move_animations: AnimationPlayer = $MoveAnimationPlayer
 @onready

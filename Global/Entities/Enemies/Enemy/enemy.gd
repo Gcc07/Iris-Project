@@ -7,7 +7,7 @@ var attack_point = $AttackPoint
 @onready
 var hitbox : Hitbox = $Hitbox
 @onready
-var enemy_sprite : Sprite2D = $Sprite2D
+var enemy_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready
 var move_animations: AnimationPlayer = $MoveAnimationPlayer
 @onready
