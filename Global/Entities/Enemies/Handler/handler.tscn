@@ -445,14 +445,14 @@ _data = {
 &"throw_attack": SubResource("Animation_357ey")
 }
 
-[sub_resource type="SystemFont" id="SystemFont_necso"]
+[sub_resource type="SystemFont" id="SystemFont_ldva7"]
 font_weight = 200
 font_stretch = 50
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_n50hk"]
 line_spacing = 0.0
-font = SubResource("SystemFont_necso")
+font = SubResource("SystemFont_ldva7")
 font_size = 14
 font_color = Color(0.854902, 0.301961, 0.301961, 1)
 outline_size = 1
@@ -542,12 +542,12 @@ collision_mask = 7
 shape = SubResource("CircleShape2D_etp55")
 debug_color = Color(0, 0.764706, 1, 0.176471)
 
-[node name="AttackDetectorArea" type="Area2D" parent="."]
+[node name="LightAttackDetectorArea" type="Area2D" parent="."]
 position = Vector2(0, -7)
 collision_layer = 0
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDetectorArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightAttackDetectorArea"]
 position = Vector2(-11, 0)
 shape = SubResource("CircleShape2D_mimb8")
 debug_color = Color(0.393138, 0.580527, 0.531306, 0.42)
@@ -596,7 +596,7 @@ jump_box = NodePath("../JumpBox")
 [node name="EnemyActionComponent" type="Node" parent="." node_paths=PackedStringArray("throw_attack_detector_area", "attack_detector_area")]
 script = ExtResource("4_o053h")
 throw_attack_detector_area = NodePath("../ThrowAttackDetectorArea")
-attack_detector_area = NodePath("../AttackDetectorArea")
+attack_detector_area = NodePath("../LightAttackDetectorArea")
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
 script = ExtResource("2_7necc")

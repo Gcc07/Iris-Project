@@ -1,4 +1,28 @@
 WORK ON:
+	
+	Adding: 
+		
 	Giving enemy random walking AI
 	Working on a dialogue system
 	Adding more enemies
+	
+	Fixing:
+	
+	Bug where player doesn't go into stun state when attacked (And possibly enemies as well)
+	
+	Making:
+	
+	Backwards drawing of REN:J-E
+	
+LORE
+	ROMULUS
+	
+	ROMULUS Exo Neuroplacent:JUSTICE-ENTITY -> Ren-J:E
+	
+	ROMULUS Intel Subterfuge & Kill:ENTITY -> Risk:E
+	
+	ROMA-12 Terror-Eradication Revenant:ENTITY -> R-TER:E
+	
+	Remote Observation & Variance(Collection):ENTITY -> ROV:E
+	
+	RIMESTILL-Proj.v273.15 | Endothermic Vitreous:ENTITY -> REV:E
