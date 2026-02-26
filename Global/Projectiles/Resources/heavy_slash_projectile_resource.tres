@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ProjectileResource" load_steps=4 format=3 uid="uid://cpi4fe1j2ej4a"]
+[gd_resource type="Resource" script_class="ProjectileResource" format=3 uid="uid://cpi4fe1j2ej4a"]
 
 [ext_resource type="Script" uid="uid://ch13tt26l8qwb" path="res://Global/Projectiles/Resources/projectile_resource.gd" id="1_y1j4r"]
 
@@ -12,29 +12,14 @@ height = 10.0
 script = ExtResource("1_y1j4r")
 ID = "Heavy Slash"
 stick_to_parent = true
-is_friendly = true
 damage = 3.0
-stuns = true
-max_pierce = 1
 time_to_live = 0.2
 collision_shape = SubResource("CapsuleShape2D_l5onv")
 hurtbox_shape = SubResource("CapsuleShape2D_y1j4r")
-rotate_collision_shape = 0.0
 rotate_hurtbox_shape = 90.0
-collision_size_corresponds_to_sprite = true
-hurtbox_size_corresponds_to_sprite = true
-breaks_on_collision = false
 sprite_texture = "uid://bgu0xph64jq36"
 num_of_frames = 3
-animation_is_continous = false
 has_animation = true
 parent_offset = Vector2(-13, -18)
-scale_factor = Vector2(1, 1)
-initial_velocity = Vector2(0, 0)
-affected_by_gravity = false
-speed = 0.0
-acceleration = 0.0
-spin_speed = 0.0
 modulate_color = Color(255, 255, 255, 255)
-modulate_outline_color = Color(0.106, 0.122, 0.129, 1)
 metadata/_custom_type_script = "uid://ch13tt26l8qwb"

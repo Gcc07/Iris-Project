@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cly0gxqkuoiej"]
+[gd_scene format=4 uid="uid://cly0gxqkuoiej"]
 
 [ext_resource type="Script" uid="uid://dk4dgxmfagupv" path="res://Global/Entities/Player/player.gd" id="1_kty55"]
 [ext_resource type="SpriteFrames" uid="uid://bwq3gllc5mrnu" path="res://Assets/Art/Characters/Renji_Sprite.aseprite" id="2_quk2k"]
@@ -86,25 +86,33 @@ sampling_rate = 44100.0
 
 [sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_6ctnb"]
 packet_sequence = SubResource("OggPacketSequence_dp0kl")
+tags = {
+"artist": "",
+"comment": "",
+"contact": "",
+"encoder": "FL Studio",
+"genre": "",
+"title": ""
+}
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1932245538 groups=["player"]]
 collision_mask = 128
 script = ExtResource("1_kty55")
 entity_id = "Player"
 
-[node name="Hitbox" parent="." instance=ExtResource("18_3h6te")]
+[node name="Hitbox" parent="." unique_id=602255324 instance=ExtResource("18_3h6te")]
 position = Vector2(0, -7)
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=448740332]
 shape = SubResource("CapsuleShape2D_quk2k")
 
-[node name="GroundCollision" type="CollisionShape2D" parent="."]
+[node name="GroundCollision" type="CollisionShape2D" parent="." unique_id=1277727649]
 position = Vector2(0, -10)
 shape = SubResource("CapsuleShape2D_rjofx")
 one_way_collision_margin = 3.1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=563560499]
 material = ExtResource("3_6ctnb")
 position = Vector2(0, -20)
 sprite_frames = ExtResource("2_quk2k")
@@ -129,31 +137,27 @@ metadata/_aseprite_wizard_interface_config_ = {
 "slice_section": false
 }
 
-[node name="MoveAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_asgkc"),
-&"PlayerMove": ExtResource("3_sa4b0")
-}
-autoplay = "idle"
+[node name="MoveAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1205887007]
+libraries/ = SubResource("AnimationLibrary_asgkc")
+libraries/PlayerMove = ExtResource("3_sa4b0")
+autoplay = &"idle"
 
-[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_asgkc"),
-&"PlayerAction": ExtResource("2_y8nmg")
-}
-autoplay = "RESET"
+[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1545668328]
+libraries/ = SubResource("AnimationLibrary_asgkc")
+libraries/PlayerAction = ExtResource("2_y8nmg")
+autoplay = &"RESET"
 
-[node name="PlayerMoveComponent" type="Node" parent="."]
+[node name="PlayerMoveComponent" type="Node" parent="." unique_id=1446149815]
 script = ExtResource("3_5a672")
 
-[node name="PlayerActionComponent" type="Node" parent="."]
+[node name="PlayerActionComponent" type="Node" parent="." unique_id=1734078872]
 script = ExtResource("4_ywbxx")
 
-[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="HealthComponent" type="Node" parent="." unique_id=982567126 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("7_eu4vx")
 hitbox = NodePath("../Hitbox")
 
-[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("movement_state_machine", "action_state_machine")]
+[node name="StateLabel" type="Label" parent="." unique_id=510140247 node_paths=PackedStringArray("movement_state_machine", "action_state_machine")]
 offset_left = -82.0
 offset_top = -82.0
 offset_right = 83.0
@@ -168,15 +172,15 @@ script = ExtResource("10_6ctnb")
 movement_state_machine = NodePath("../MoveStateMachine")
 action_state_machine = NodePath("../ActionStateMachine")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1694502767]
 stream = SubResource("AudioStreamOggVorbis_6ctnb")
 
-[node name="AttackPoint" type="Node2D" parent="."]
+[node name="AttackPoint" type="Node2D" parent="." unique_id=547993692]
 
-[node name="MoveStateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("6_8sue5")]
+[node name="MoveStateMachine" parent="." unique_id=169379254 node_paths=PackedStringArray("starting_state") instance=ExtResource("6_8sue5")]
 starting_state = NodePath("idle")
 
-[node name="move" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
+[node name="move" type="Node" parent="MoveStateMachine" unique_id=1427374220 node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
 script = ExtResource("7_jklmg")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
@@ -185,14 +189,14 @@ move_speed = 120.0
 state_sound = 8
 animation_name = "move"
 
-[node name="fall" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("idle_state", "move_state")]
+[node name="fall" type="Node" parent="MoveStateMachine" unique_id=294287129 node_paths=PackedStringArray("idle_state", "move_state")]
 script = ExtResource("8_h88bi")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
 move_speed = 160.0
 animation_name = "fall"
 
-[node name="idle" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
+[node name="idle" type="Node" parent="MoveStateMachine" unique_id=461355302 node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
 script = ExtResource("9_3wfp4")
 fall_state = NodePath("../fall")
 jump_state = NodePath("../jump")
@@ -201,7 +205,7 @@ move_speed = 0.0
 state_sound = 1
 animation_name = "idle"
 
-[node name="jump" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
+[node name="jump" type="Node" parent="MoveStateMachine" unique_id=109969228 node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
 script = ExtResource("10_6iif7")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
@@ -209,10 +213,10 @@ move_state = NodePath("../move")
 state_sound = 10
 animation_name = "jump"
 
-[node name="ActionStateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("11_8c3ms")]
+[node name="ActionStateMachine" parent="." unique_id=1398814039 node_paths=PackedStringArray("starting_state") instance=ExtResource("11_8c3ms")]
 starting_state = NodePath("none")
 
-[node name="light" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
+[node name="light" type="Node" parent="ActionStateMachine" unique_id=298242850 node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
 script = ExtResource("18_quk2k")
 allow_movement = true
 none_state = NodePath("../none")
@@ -222,7 +226,7 @@ stunned_state = NodePath("../stunned")
 state_sound = 7
 animation_name = "light_attack"
 
-[node name="heavy" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
+[node name="heavy" type="Node" parent="ActionStateMachine" unique_id=1909626048 node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
 script = ExtResource("18_quk2k")
 none_state = NodePath("../none")
 attack_projectile_resources = Array[ExtResource("18_r275i")]([ExtResource("19_ffmis")])
@@ -231,7 +235,7 @@ stunned_state = NodePath("../stunned")
 state_sound = 6
 animation_name = "heavy_attack"
 
-[node name="special" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
+[node name="special" type="Node" parent="ActionStateMachine" unique_id=965670417 node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
 script = ExtResource("18_quk2k")
 none_state = NodePath("../none")
 attack_projectile_resources = Array[ExtResource("18_r275i")]([ExtResource("22_6ctnb")])
@@ -240,7 +244,7 @@ stunned_state = NodePath("../stunned")
 state_sound = 5
 animation_name = "special_attack"
 
-[node name="none" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("light_attack_state", "heavy_attack_state", "special_attack_state", "parry_state", "death_state", "stunned_state")]
+[node name="none" type="Node" parent="ActionStateMachine" unique_id=331190209 node_paths=PackedStringArray("light_attack_state", "heavy_attack_state", "special_attack_state", "parry_state", "death_state", "stunned_state")]
 script = ExtResource("21_quk2k")
 light_attack_state = NodePath("../light")
 heavy_attack_state = NodePath("../heavy")
@@ -249,13 +253,13 @@ parry_state = NodePath("../parry")
 death_state = NodePath("../death")
 stunned_state = NodePath("../stunned")
 
-[node name="death" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("death_state", "stunned_state")]
+[node name="death" type="Node" parent="ActionStateMachine" unique_id=125410599 node_paths=PackedStringArray("death_state", "stunned_state")]
 script = ExtResource("21_5fg26")
 death_state = NodePath(".")
 stunned_state = NodePath("../stunned")
 animation_name = "death"
 
-[node name="stunned" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
+[node name="stunned" type="Node" parent="ActionStateMachine" unique_id=1067505843 node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
 script = ExtResource("25_6ctnb")
 none_state = NodePath("../none")
 stun_time = 0.1
@@ -264,7 +268,7 @@ stunned_state = NodePath(".")
 animation_name = "stunned"
 metadata/_custom_type_script = "uid://br23gdmo4glw4"
 
-[node name="parry" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
+[node name="parry" type="Node" parent="ActionStateMachine" unique_id=505541286 node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
 script = ExtResource("24_ffmis")
 none_state = NodePath("../none")
 death_state = NodePath("../death")
