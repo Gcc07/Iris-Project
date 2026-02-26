@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ProjectileResource" load_steps=4 format=3 uid="uid://ty7lccs3t5lg"]
+[gd_resource type="Resource" script_class="ProjectileResource" format=3 uid="uid://ty7lccs3t5lg"]
 
 [ext_resource type="Script" uid="uid://ch13tt26l8qwb" path="res://Global/Projectiles/Resources/projectile_resource.gd" id="1_57ovb"]
 
@@ -10,29 +10,11 @@
 script = ExtResource("1_57ovb")
 ID = "Slash"
 stick_to_parent = true
-is_friendly = true
 damage = 3.0
-stuns = true
-max_pierce = 1
-time_to_live = 0.1
 collision_shape = SubResource("RectangleShape2D_57ovb")
 hurtbox_shape = SubResource("RectangleShape2D_vbbyw")
-rotate_collision_shape = 0.0
-rotate_hurtbox_shape = 0.0
-collision_size_corresponds_to_sprite = true
-hurtbox_size_corresponds_to_sprite = true
-breaks_on_collision = false
-sprite_texture = "uid://cca0o8n8lhrcp"
-num_of_frames = 1
-animation_is_continous = false
-has_animation = false
 parent_offset = Vector2(-15, -10)
 scale_factor = Vector2(3, 1)
-initial_velocity = Vector2(0, 0)
-affected_by_gravity = false
-speed = 0.0
-acceleration = 0.0
-spin_speed = 0.0
-modulate_color = Color(0.901961, 0.270588, 0.223529, 1)
-modulate_outline_color = Color(1, 1, 1, 0)
+modulate_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
+modulate_outline_color = Color(0.105882354, 0.12156863, 0.12941177, 0)
 metadata/_custom_type_script = "uid://ch13tt26l8qwb"

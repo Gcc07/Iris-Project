@@ -158,10 +158,10 @@ script = ExtResource("7_eu4vx")
 hitbox = NodePath("../Hitbox")
 
 [node name="StateLabel" type="Label" parent="." unique_id=510140247 node_paths=PackedStringArray("movement_state_machine", "action_state_machine")]
-offset_left = -82.0
-offset_top = -82.0
-offset_right = 83.0
-offset_bottom = -35.0
+offset_left = -81.0
+offset_top = -105.0
+offset_right = 84.0
+offset_bottom = -58.0
 text = "Move:
 Action:"
 label_settings = SubResource("LabelSettings_ffmis")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c7ibdequcmxh4"]
+[gd_scene format=3 uid="uid://c7ibdequcmxh4"]
 
 [ext_resource type="Script" uid="uid://cv300ogata8cn" path="res://Global/Entities/NPCs/Wyrd/wyrd_npc.gd" id="1_ilor2"]
 [ext_resource type="PackedScene" uid="uid://jmnf0fy8c8di" path="res://Global/Classes/hitbox.tscn" id="2_gov7c"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bybtb1c113b3d" path="res://Global/Entities/PublicStates/Movement/idle.gd" id="7_qcbef"]
 [ext_resource type="Script" uid="uid://bnycl8fb3yooy" path="res://Global/Entities/PublicStates/Movement/jump.gd" id="8_q0cg4"]
 [ext_resource type="Script" uid="uid://bl5bugg34keig" path="res://Global/Entities/NPCs/Wyrd/wyrd_move_component.gd" id="9_gov7c"]
+[ext_resource type="Texture2D" uid="uid://d2pr4rruf7p31" path="res://Assets/Art/UI/InteractionUI.aseprite" id="11_6angc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gov7c"]
 radius = 60.0
@@ -146,7 +147,7 @@ _data = {
 &"RESET": SubResource("Animation_hd8eq")
 }
 
-[node name="Wyrd" type="CharacterBody2D" node_paths=PackedStringArray("move_animations", "action_animations", "movement_state_machine", "move_component") groups=["npc"]]
+[node name="Wyrd" type="CharacterBody2D" unique_id=185925471 node_paths=PackedStringArray("move_animations", "action_animations", "movement_state_machine", "move_component") groups=["npc"]]
 collision_layer = 8
 collision_mask = 128
 script = ExtResource("1_ilor2")
@@ -159,44 +160,40 @@ hostile = false
 can_be_damaged = false
 metadata/_custom_type_script = "uid://2k7a4wf13lj"
 
-[node name="AttentionBox" type="Area2D" parent="."]
+[node name="AttentionBox" type="Area2D" parent="." unique_id=1763441626]
 collision_layer = 0
 collision_mask = 7
 
-[node name="NoticeShape" type="CollisionShape2D" parent="AttentionBox"]
+[node name="NoticeShape" type="CollisionShape2D" parent="AttentionBox" unique_id=1792061794]
 shape = SubResource("CircleShape2D_gov7c")
 debug_color = Color(0, 0.764706, 1, 0.176471)
 
-[node name="Hitbox" parent="." instance=ExtResource("2_gov7c")]
+[node name="Hitbox" parent="." unique_id=712783674 instance=ExtResource("2_gov7c")]
 position = Vector2(0, -10)
 collision_layer = 2
 collision_mask = 5
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1215427227]
 material = SubResource("ShaderMaterial_48iat")
 position = Vector2(0, -25)
 sprite_frames = ExtResource("3_biyvt")
 
-[node name="GroundCollision" type="CollisionShape2D" parent="."]
+[node name="GroundCollision" type="CollisionShape2D" parent="." unique_id=1536306901]
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_7rwky")
 
-[node name="MoveAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_yc1lo"),
-&"WyrdMove": ExtResource("4_biyvt")
-}
+[node name="MoveAnimationPlayer" type="AnimationPlayer" parent="." unique_id=460704447]
+libraries/ = SubResource("AnimationLibrary_yc1lo")
+libraries/WyrdMove = ExtResource("4_biyvt")
 
-[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_asgkc")
-}
-autoplay = "idle"
+[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="." unique_id=925200208]
+libraries/ = SubResource("AnimationLibrary_asgkc")
+autoplay = &"idle"
 
-[node name="MoveStateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("4_6angc")]
+[node name="MoveStateMachine" parent="." unique_id=156328329 node_paths=PackedStringArray("starting_state") instance=ExtResource("4_6angc")]
 starting_state = NodePath("idle")
 
-[node name="move" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
+[node name="move" type="Node" parent="MoveStateMachine" unique_id=2039406874 node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
 script = ExtResource("5_yc1lo")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
@@ -204,26 +201,44 @@ jump_state = NodePath("../jump")
 move_speed = 120.0
 animation_name = "move"
 
-[node name="fall" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("idle_state", "move_state")]
+[node name="fall" type="Node" parent="MoveStateMachine" unique_id=1909307357 node_paths=PackedStringArray("idle_state", "move_state")]
 script = ExtResource("6_8a2b4")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
 animation_name = "fall"
 
-[node name="idle" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
+[node name="idle" type="Node" parent="MoveStateMachine" unique_id=806540094 node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
 script = ExtResource("7_qcbef")
 fall_state = NodePath("../fall")
 jump_state = NodePath("../jump")
 move_state = NodePath("../move")
 animation_name = "idle"
 
-[node name="jump" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
+[node name="jump" type="Node" parent="MoveStateMachine" unique_id=1687011180 node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
 script = ExtResource("8_q0cg4")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
 animation_name = "jump"
 
-[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("attention_box")]
+[node name="MoveComponent" type="Node" parent="." unique_id=1698197587 node_paths=PackedStringArray("attention_box")]
 script = ExtResource("9_gov7c")
 attention_box = NodePath("../AttentionBox")
+
+[node name="InteractionComponent" type="TextureRect" parent="." unique_id=2125455058]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -45.0
+offset_right = 11.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(11, 18)
+texture = ExtResource("11_6angc")
+expand_mode = 5
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true

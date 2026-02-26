@@ -21,5 +21,6 @@ sprite_texture = "uid://bgu0xph64jq36"
 num_of_frames = 3
 has_animation = true
 parent_offset = Vector2(-13, -18)
-modulate_color = Color(255, 255, 255, 255)
+modulate_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
+modulate_outline_color = Color(0.105882354, 0.12156863, 0.12941177, 0)
 metadata/_custom_type_script = "uid://ch13tt26l8qwb"
