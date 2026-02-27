@@ -21,11 +21,11 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 [audio]
 
-buses/default_bus_layout="res://Utilities/Audio/default_bus_layout.tres"
+buses/default_bus_layout="res://Utilities/Systems/Audio/default_bus_layout.tres"
 
 [autoload]
 
-AudioManager="*res://Utilities/Audio/AudioManager.tscn"
+AudioManager="*res://Utilities/Systems/Audio/AudioManager.tscn"
 
 [debug]
 
@@ -70,7 +70,7 @@ folder_colors={
 "res://Utilities/": "gray",
 "res://addons/": "gray",
 "res://addons/AsepriteWizard/": "purple",
-"res://tmp/": "purple"
+"res://tmp (Unused)/": "purple"
 }
 
 [input]

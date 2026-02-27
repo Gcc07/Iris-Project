@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cql8acbpetak4" path="res://Global/Entities/Enemies/Enemy/UniqueComponents/enemy_move_component.gd" id="3_w41fc"]
 [ext_resource type="Script" uid="uid://h2y7udv1fy6s" path="res://Global/Entities/Enemies/Handler/UniqueComponents/handler_enemy_action_component.gd" id="4_o053h"]
 [ext_resource type="PackedScene" uid="uid://jmnf0fy8c8di" path="res://Global/Classes/hitbox.tscn" id="5_obfdl"]
-[ext_resource type="PackedScene" uid="uid://07qnueve2in3" path="res://Global/Entities/StateMachines/action_state_machine.tscn" id="6_4i0jk"]
+[ext_resource type="PackedScene" uid="uid://07qnueve2in3" path="res://Global/Entities/StateMachines/ActionStateMachine.tscn" id="6_4i0jk"]
 [ext_resource type="SpriteFrames" uid="uid://b5y6nhfmyw6r2" path="res://Assets/Art/Characters/Handler_Sprite.aseprite" id="8_d8ri2"]
 [ext_resource type="Script" uid="uid://c077xtpgid0o6" path="res://Global/Entities/Components/state_label.gd" id="9_ldva7"]
 [ext_resource type="PackedScene" uid="uid://c2njkfc01sgji" path="res://Global/Entities/StateMachines/move_state_machine.tscn" id="10_55sok"]

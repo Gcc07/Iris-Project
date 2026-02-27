@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://bybtb1c113b3d" path="res://Global/Entities/PublicStates/Movement/idle.gd" id="9_3wfp4"]
 [ext_resource type="Script" uid="uid://c077xtpgid0o6" path="res://Global/Entities/Components/state_label.gd" id="10_6ctnb"]
 [ext_resource type="Script" uid="uid://bnycl8fb3yooy" path="res://Global/Entities/PublicStates/Movement/jump.gd" id="10_6iif7"]
-[ext_resource type="PackedScene" uid="uid://07qnueve2in3" path="res://Global/Entities/StateMachines/action_state_machine.tscn" id="11_8c3ms"]
+[ext_resource type="PackedScene" uid="uid://07qnueve2in3" path="res://Global/Entities/StateMachines/ActionStateMachine.tscn" id="11_8c3ms"]
 [ext_resource type="PackedScene" uid="uid://jmnf0fy8c8di" path="res://Global/Classes/hitbox.tscn" id="18_3h6te"]
 [ext_resource type="Resource" uid="uid://ty7lccs3t5lg" path="res://Global/Projectiles/Resources/slash_projectile_resource.tres" id="18_6ctnb"]
 [ext_resource type="Script" uid="uid://bf0r8p5y4wwp8" path="res://Global/Entities/PublicStates/Action/Attack/attack_state.gd" id="18_quk2k"]

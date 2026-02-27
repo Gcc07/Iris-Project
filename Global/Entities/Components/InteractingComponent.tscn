@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dilt3hqkyqreg"]
+
+[ext_resource type="Script" uid="uid://b0klac6ip07mn" path="res://Global/Entities/Components/interacting_component.gd" id="1_kuvhb"]
+[ext_resource type="Texture2D" uid="uid://bcnjvpvesbyve" path="res://Assets/Art/UI/Interact.aseprite" id="2_kuvhb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ighg2"]
+radius = 44.181442
+
+[node name="InteractingComponent" type="Node2D" unique_id=1306676980]
+script = ExtResource("1_kuvhb")
+
+[node name="InteractionGraphic" type="TextureRect" parent="." unique_id=1045189107]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -45.0
+offset_right = 11.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(11, 18)
+texture = ExtResource("2_kuvhb")
+expand_mode = 5
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="InteractableArea" type="Area2D" parent="." unique_id=596555693]
+
+[node name="InteractableAreaShape" type="CollisionShape2D" parent="InteractableArea" unique_id=793833426]
+shape = SubResource("CircleShape2D_ighg2")
+
+[connection signal="area_entered" from="InteractableArea" to="." method="_on_interactable_area_area_entered"]
+[connection signal="area_exited" from="InteractableArea" to="." method="_on_interactable_area_area_exited"]

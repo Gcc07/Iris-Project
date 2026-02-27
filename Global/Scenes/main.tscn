@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://c5hvh64y4o77c"]
+[gd_scene format=4 uid="uid://c5hvh64y4o77c"]
 
 [ext_resource type="Texture2D" uid="uid://cuip4hetwmctt" path="res://Assets/Art/Tilesets/TMAP.png" id="1_3ptaa"]
-[ext_resource type="PackedScene" uid="uid://cly0gxqkuoiej" path="res://Global/Entities/Player/player.tscn" id="2_w0ego"]
+[ext_resource type="PackedScene" uid="uid://cly0gxqkuoiej" path="res://Global/Entities/Player/Player.tscn" id="2_w0ego"]
 [ext_resource type="Texture2D" uid="uid://dlmaqaklw4s14" path="res://Assets/Art/Concept/TestEnv.png" id="3_kvelk"]
-[ext_resource type="PackedScene" uid="uid://cqxlfhln76dxm" path="res://Global/Entities/Enemies/Handler/handler.tscn" id="5_dknhj"]
-[ext_resource type="PackedScene" uid="uid://c7ibdequcmxh4" path="res://Global/Entities/NPCs/Wyrd/wyrd.tscn" id="9_jbbcs"]
+[ext_resource type="PackedScene" uid="uid://cqxlfhln76dxm" path="res://Global/Entities/Enemies/Handler/Handler.tscn" id="5_dknhj"]
+[ext_resource type="PackedScene" uid="uid://c7ibdequcmxh4" path="res://Global/Entities/NPCs/Wyrd/Wyrd.tscn" id="9_jbbcs"]
 [ext_resource type="Script" uid="uid://c7vi47ybajeqd" path="res://Global/Entities/Player/player_camera.gd" id="10_8n0gi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_155du"]
@@ -120,7 +120,7 @@ void fragment() {
 //}
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8n0gi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yf72o"]
 resource_local_to_scene = true
 shader = SubResource("Shader_t0tcr")
 shader_parameter/outline_color = Color(0.105882, 0.121569, 0.129412, 1)
@@ -129,7 +129,7 @@ shader_parameter/alpha_threshold = 0.0
 shader_parameter/outline_samples = 8
 shader_parameter/shade_color = Color(1, 1, 1, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7wqt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5muh"]
 resource_local_to_scene = true
 shader = SubResource("Shader_t0tcr")
 shader_parameter/outline_color = Color(0.105882, 0.121569, 0.129412, 1)
@@ -138,38 +138,38 @@ shader_parameter/alpha_threshold = 0.0
 shader_parameter/outline_samples = 8
 shader_parameter/shade_color = Color(1, 1, 1, 0)
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=322069281]
 
-[node name="Wyrd" parent="." instance=ExtResource("9_jbbcs")]
+[node name="Wyrd" parent="." unique_id=362280782 instance=ExtResource("9_jbbcs")]
 position = Vector2(185, 243)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2039527668]
 z_index = 1
 tile_map_data = PackedByteArray("AAAAABAAAAAAAAAAAAABABAAAAABAAAAAAACABAAAAABAAAAAAADABAAAAABAAAAAAAEABAAAAABAAAAAAAFABAAAAABAAAAAAAGABAAAAABAAAAAAAHABAAAAABAAAAAAAIABAAAAABAAAAAAAJABAAAAABAAAAAAAKABAAAAABAAAAAAALABAAAAABAAAAAAAMABAAAAABAAAAAAANABAAAAABAAAAAAAOABAAAAABAAAAAAAPABAAAAABAAAAAAAQABAAAAABAAAAAAARABAAAAABAAAAAAASABAAAAABAAAAAAATABAAAAABAAAAAAAUABAAAAABAAAAAAAVABAAAAABAAAAAAAWABAAAAABAAAAAAAXABAAAAABAAAAAAAYABAAAAABAAAAAAAZABAAAAAFAAAAAAAaABAAAAAFAAAAAAAbABAAAAAFAAAAAAAcABAAAAAFAAAAAAAdABAAAAAGAAAAAAAXAA0AAAABAAEAAAAYAA0AAAACAAEAAAAZAAsAAAABAAEAAAAaAAsAAAADAAEAAAAbAA4AAAACAAEAAAAcAAkAAAABAAAAAAAYAAgAAAABAAAAAAAVAAYAAAABAAAAAAASAAQAAAABAAAAAAAOAAMAAAACAAAAAAAKAAMAAAACAAAAAAAFAAMAAAACAAAAAAAfABMAAAABAAAAAAAgABMAAAABAAAAAAAhABMAAAAFAAAAAAAeABMAAAAAAAAAAAAiABMAAAAGAAAAAAAjABEAAAAAAAAAAAAkABEAAAAGAAAAAAAXAA4AAAABAAIAAAAYAA4AAAACAAIAAAAXAA8AAAABAAMAAAAYAA8AAAACAAMAAAAZAA0AAAADAAEAAAAZAA4AAAADAAIAAAAZAA8AAAADAAMAAAAUAA8AAAABAAEAAAAVAA8AAAADAAEAAAAcAA4AAAADAAEAAAAaAA4AAAAEAAEAAAA=")
 tile_set = SubResource("TileSet_vj60j")
 
-[node name="Player" parent="." instance=ExtResource("2_w0ego")]
+[node name="Player" parent="." unique_id=596085116 instance=ExtResource("2_w0ego")]
 position = Vector2(240, 135)
 
-[node name="Handler" parent="." instance=ExtResource("5_dknhj")]
-material = SubResource("ShaderMaterial_8n0gi")
+[node name="Handler" parent="." unique_id=445052551 instance=ExtResource("5_dknhj")]
+material = SubResource("ShaderMaterial_yf72o")
 position = Vector2(115, 218)
 
-[node name="Handler2" parent="." instance=ExtResource("5_dknhj")]
-material = SubResource("ShaderMaterial_f7wqt")
+[node name="Handler2" parent="." unique_id=308713955 instance=ExtResource("5_dknhj")]
+material = SubResource("ShaderMaterial_y5muh")
 position = Vector2(345, 84)
 
-[node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+[node name="PlayerCamera" type="Camera2D" parent="." unique_id=1013995571 node_paths=PackedStringArray("target")]
 script = ExtResource("10_8n0gi")
 target = NodePath("../Player")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=870181331]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1870060586]
 top_level = true
 motion_scale = Vector2(0.95, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1726346810]
 position = Vector2(32, 1)
 texture = ExtResource("3_kvelk")
 centered = false

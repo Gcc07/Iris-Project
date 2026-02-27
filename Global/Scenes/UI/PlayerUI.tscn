@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp25ebfh2jmkm"]
+[gd_scene format=3 uid="uid://dp25ebfh2jmkm"]
 
 [ext_resource type="Script" uid="uid://cd7xc4daxs03y" path="res://Global/Entities/Player/player_data.gd" id="1_84j6u"]
 [ext_resource type="Texture2D" uid="uid://dylwru3yvwn6d" path="res://Assets/Art/UI/PlayerUI.aseprite" id="1_flfsf"]
@@ -12,7 +12,7 @@ gradient = SubResource("Gradient_s50ei")
 width = 145
 height = 6
 
-[node name="PlayerUI" type="Control"]
+[node name="PlayerUI" type="Control" unique_id=1437979512]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player Data" type="TextureRect" parent="." node_paths=PackedStringArray("healthBar")]
+[node name="Player Data" type="TextureRect" parent="." unique_id=670940278 node_paths=PackedStringArray("healthBar")]
 z_index = 2
 texture_filter = 1
 layout_mode = 1
@@ -36,7 +36,7 @@ script = ExtResource("1_84j6u")
 healthBar = NodePath("HealthBar")
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar" type="TextureProgressBar" parent="Player Data"]
+[node name="HealthBar" type="TextureProgressBar" parent="Player Data" unique_id=1445772835]
 z_index = -1
 layout_mode = 1
 anchors_preset = -1

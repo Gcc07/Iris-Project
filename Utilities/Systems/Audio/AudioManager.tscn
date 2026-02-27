@@ -1,7 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://dygk5a7g1wqk7"]
+[gd_scene format=3 uid="uid://dygk5a7g1wqk7"]
 
-[ext_resource type="Script" uid="uid://cbfqmshc8t35k" path="res://Utilities/Audio/AudioManager.gd" id="1_ilgda"]
-[ext_resource type="Script" uid="uid://dwm1drlnk2yp1" path="res://Utilities/Audio/Resources/sound_effect.gd" id="2_cr1dt"]
+[ext_resource type="Script" uid="uid://cbfqmshc8t35k" path="res://Utilities/Systems/Audio/AudioManager.gd" id="1_ilgda"]
+[ext_resource type="Script" uid="uid://dwm1drlnk2yp1" path="res://Utilities/Systems/Audio/Resources/sound_effect.gd" id="2_cr1dt"]
 [ext_resource type="AudioStream" uid="uid://bi27jayifg055" path="res://Assets/Audio/SFX/Attack1.mp3" id="3_4an1w"]
 [ext_resource type="AudioStream" uid="uid://d2rweje61iw63" path="res://Assets/Audio/SFX/Parry.mp3" id="3_felhm"]
 [ext_resource type="AudioStream" uid="uid://0iaku0gpdk2b" path="res://Assets/Audio/SFX/Attack2.mp3" id="4_u2g5c"]
