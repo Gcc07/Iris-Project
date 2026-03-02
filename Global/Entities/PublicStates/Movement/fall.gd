@@ -23,7 +23,8 @@ func process_physics(delta: float) -> MovementState:
 			return idle_state
 		return null
 	# return null
+	
 func exit():
-	play_sound()
+	# On exit:
 	pass
 	

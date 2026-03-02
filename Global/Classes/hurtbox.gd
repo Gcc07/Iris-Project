@@ -5,11 +5,13 @@ extends Area2D
 
 signal hit_target
 
-@onready var projectile : Projectile = get_owner() # Get the owner of this 
+@onready var projectile : Projectile # Get the owner of this 
 # hurtbox, being the Projectile to which the hurtbox is assigned
 
 func _ready() -> void:
-	area_entered.connect(on_area_entered)
+	if get_owner() is Projectile:
+		projectile = get_owner()
+		area_entered.connect(on_area_entered)
 
 func on_area_entered(area: Area2D):
 	if area is Hitbox:

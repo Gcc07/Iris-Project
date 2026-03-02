@@ -163,7 +163,6 @@ material = SubResource("ShaderMaterial_oqi6v")
 position = Vector2(456, 136)
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=1013995571 node_paths=PackedStringArray("target")]
-visible = false
 script = ExtResource("10_8n0gi")
 target = NodePath("../Player")
 

@@ -15,6 +15,7 @@ var special_attack_state : ActionState
 var parry_state : ActionState
 
 func enter() -> void:
+	actionAnimations.play(&"RESET") ## CAUSES WEIRD ISSUE WHERE ATTACK PLAYS TWICE
 	
 	parent.can_move = true
 	actionAnimations.active = false

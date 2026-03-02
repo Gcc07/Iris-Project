@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://cly0gxqkuoiej" path="res://Global/Entities/Player/Player.tscn" id="2_w0ego"]
 [ext_resource type="Texture2D" uid="uid://dlmaqaklw4s14" path="res://Assets/Art/Concept/TestEnv.png" id="3_kvelk"]
 [ext_resource type="PackedScene" uid="uid://cqxlfhln76dxm" path="res://Global/Entities/Enemies/Handler/Handler.tscn" id="5_dknhj"]
-[ext_resource type="Script" uid="uid://cg3qeta413pu0" path="res://Global/Classes/hurtbox.gd" id="7_y5muh"]
 [ext_resource type="PackedScene" uid="uid://c7ibdequcmxh4" path="res://Global/Entities/NPCs/Wyrd/Wyrd.tscn" id="9_jbbcs"]
 [ext_resource type="Script" uid="uid://c7vi47ybajeqd" path="res://Global/Entities/Player/player_camera.gd" id="10_8n0gi"]
 
@@ -121,6 +120,15 @@ void fragment() {
 //}
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yf72o"]
+resource_local_to_scene = true
+shader = SubResource("Shader_t0tcr")
+shader_parameter/outline_color = Color(0.105882, 0.121569, 0.129412, 1)
+shader_parameter/outline_size = 1.0
+shader_parameter/alpha_threshold = 0.0
+shader_parameter/outline_samples = 8
+shader_parameter/shade_color = Color(1, 1, 1, 0)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y5muh"]
 resource_local_to_scene = true
 shader = SubResource("Shader_t0tcr")
@@ -130,21 +138,10 @@ shader_parameter/alpha_threshold = 0.0
 shader_parameter/outline_samples = 8
 shader_parameter/shade_color = Color(1, 1, 1, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqi6v"]
-resource_local_to_scene = true
-shader = SubResource("Shader_t0tcr")
-shader_parameter/outline_color = Color(0.105882, 0.121569, 0.129412, 1)
-shader_parameter/outline_size = 1.0
-shader_parameter/alpha_threshold = 0.0
-shader_parameter/outline_samples = 8
-shader_parameter/shade_color = Color(1, 1, 1, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_djdpb"]
-
 [node name="Game" type="Node2D" unique_id=322069281]
 
 [node name="Wyrd" parent="." unique_id=362280782 instance=ExtResource("9_jbbcs")]
-position = Vector2(103, 238)
+position = Vector2(185, 243)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2039527668]
 z_index = 1
@@ -155,15 +152,14 @@ tile_set = SubResource("TileSet_vj60j")
 position = Vector2(240, 135)
 
 [node name="Handler" parent="." unique_id=445052551 instance=ExtResource("5_dknhj")]
-material = SubResource("ShaderMaterial_y5muh")
-position = Vector2(342, 89)
+material = SubResource("ShaderMaterial_yf72o")
+position = Vector2(115, 218)
 
 [node name="Handler2" parent="." unique_id=308713955 instance=ExtResource("5_dknhj")]
-material = SubResource("ShaderMaterial_oqi6v")
-position = Vector2(456, 136)
+material = SubResource("ShaderMaterial_y5muh")
+position = Vector2(345, 84)
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=1013995571 node_paths=PackedStringArray("target")]
-visible = false
 script = ExtResource("10_8n0gi")
 target = NodePath("../Player")
 
@@ -177,11 +173,3 @@ motion_scale = Vector2(0.95, 1)
 position = Vector2(32, 1)
 texture = ExtResource("3_kvelk")
 centered = false
-
-[node name="Hurtbox" type="Area2D" parent="." unique_id=217791652]
-script = ExtResource("7_y5muh")
-metadata/_custom_type_script = "uid://cg3qeta413pu0"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1581020871]
-position = Vector2(42, 246)
-shape = SubResource("RectangleShape2D_djdpb")

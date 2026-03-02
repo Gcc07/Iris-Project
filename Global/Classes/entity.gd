@@ -11,7 +11,7 @@ extends CharacterBody2D
 @export var stunned := false
 @export var parrying := false
 
-#@export var status_effects_array : Array = []
+@export var status_effects_array : Array = []
 #
 #func _process(delta: float) -> void:
 	#if parrying && !status_effects_array.has("parrying"):

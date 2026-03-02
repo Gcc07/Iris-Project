@@ -2,6 +2,8 @@ WORK ON:
 	
 	Adding: 
 		
+	Make player walk slower during dialogue
+		
 	Giving enemy random walking AI
 	Working on a dialogue system
 	Adding more enemies

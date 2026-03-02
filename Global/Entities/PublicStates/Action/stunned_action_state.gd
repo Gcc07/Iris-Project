@@ -28,8 +28,10 @@ func _on_timer_timeout():
 
 func process_physics(delta: float) -> ActionState:
 	if not parent.stunned:
-		sprite.material.set_shader_parameter("shade_color", Color(1.0, 1.0, 1.0, 0.0))
-		parent.can_be_damaged = true
 		return none_state
 	else: 
 		return null
+
+func exit() -> void:
+	sprite.material.set_shader_parameter("shade_color", Color(1.0, 1.0, 1.0, 0.0))
+	parent.can_be_damaged = true

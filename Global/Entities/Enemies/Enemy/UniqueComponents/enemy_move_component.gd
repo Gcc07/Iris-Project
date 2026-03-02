@@ -22,7 +22,7 @@ func _ready():
 	
 func _on_notice_box_body_entered(body):
 	if body is Player:
-		print("Player has entered.")
+		# print("Player has entered.")
 		attention_box.get_child(0).shape.radius = get_parent().AI_pursue_radius
 		is_player_in_area = true
 		target = body
@@ -30,7 +30,7 @@ func _on_notice_box_body_entered(body):
 func _on_notice_box_body_exited(body):
 	if body is Player:
 		# var tween = create_tween()
-		print("Player has exited.")
+		# print("Player has exited.")
 		is_player_in_area = false
 		target = null
 		#tween.tween_property(attention_box.get_child(0).shape, "radius", get_parent().AI_notice_radius, .5) This changes the notice box back to the original through a tween.

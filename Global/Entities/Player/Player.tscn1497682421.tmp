@@ -11,12 +11,11 @@
 [ext_resource type="Script" uid="uid://d0m28cl6gml5p" path="res://Global/Entities/Components/health_component.gd" id="7_eu4vx"]
 [ext_resource type="Script" uid="uid://vdwjy5ar2b6m" path="res://Global/Entities/PublicStates/Movement/move.gd" id="7_jklmg"]
 [ext_resource type="PackedScene" uid="uid://dilt3hqkyqreg" path="res://Global/Entities/Components/InteractingComponent.tscn" id="7_n3wfa"]
+[ext_resource type="Script" uid="uid://dyrygqjk1mao2" path="res://Global/Entities/PublicStates/Movement/fall.gd" id="8_h88bi"]
 [ext_resource type="Script" uid="uid://bybtb1c113b3d" path="res://Global/Entities/PublicStates/Movement/idle.gd" id="9_3wfp4"]
 [ext_resource type="Script" uid="uid://c077xtpgid0o6" path="res://Global/Entities/Components/state_label.gd" id="10_6ctnb"]
 [ext_resource type="Script" uid="uid://bnycl8fb3yooy" path="res://Global/Entities/PublicStates/Movement/jump.gd" id="10_6iif7"]
 [ext_resource type="PackedScene" uid="uid://07qnueve2in3" path="res://Global/Entities/StateMachines/ActionStateMachine.tscn" id="11_8c3ms"]
-[ext_resource type="Script" uid="uid://cagfc3bgpn4d6" path="res://Global/Entities/Player/PlayerStates/player_fall_state.gd" id="14_n3wfa"]
-[ext_resource type="Script" uid="uid://dte23sxxcf8c8" path="res://Global/Entities/Player/PlayerStates/player_stumble_state.gd" id="15_5xtan"]
 [ext_resource type="PackedScene" uid="uid://jmnf0fy8c8di" path="res://Global/Classes/Hitbox.tscn" id="18_3h6te"]
 [ext_resource type="Resource" uid="uid://ty7lccs3t5lg" path="res://Global/Projectiles/Resources/slash_projectile_resource.tres" id="18_6ctnb"]
 [ext_resource type="Script" uid="uid://bf0r8p5y4wwp8" path="res://Global/Entities/PublicStates/Action/Attack/attack_state.gd" id="18_quk2k"]
@@ -61,19 +60,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"Idle"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -20)]
+"values": [&"Fall"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_asgkc"]
@@ -132,7 +119,7 @@ one_way_collision_margin = 3.1
 material = ExtResource("3_6ctnb")
 position = Vector2(0, -20)
 sprite_frames = ExtResource("2_quk2k")
-animation = &"Idle"
+animation = &"Fall"
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
 "layer_section": false,
@@ -208,20 +195,12 @@ move_speed = 120.0
 state_sound = 8
 animation_name = "move"
 
-[node name="fall" type="Node" parent="MoveStateMachine" unique_id=294287129 node_paths=PackedStringArray("stumble_state", "idle_state", "move_state")]
-script = ExtResource("14_n3wfa")
-stumble_state = NodePath("../stumble")
+[node name="fall" type="Node" parent="MoveStateMachine" unique_id=294287129 node_paths=PackedStringArray("idle_state", "move_state")]
+script = ExtResource("8_h88bi")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
+move_speed = 160.0
 animation_name = "fall"
-
-[node name="stumble" type="Node" parent="MoveStateMachine" unique_id=2078326556 node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
-script = ExtResource("15_5xtan")
-fall_state = NodePath("../fall")
-idle_state = NodePath("../idle")
-move_state = NodePath("../move")
-move_speed = 50.0
-animation_name = "stumble"
 
 [node name="idle" type="Node" parent="MoveStateMachine" unique_id=461355302 node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
 script = ExtResource("9_3wfp4")
@@ -237,7 +216,6 @@ script = ExtResource("10_6iif7")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
-jump_force = 325.0
 state_sound = 10
 animation_name = "jump"
 

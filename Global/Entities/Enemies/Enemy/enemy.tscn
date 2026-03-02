@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dspysyg43f0im" path="res://Global/Entities/Enemies/Enemy/enemy.gd" id="1_8aesk"]
 [ext_resource type="AnimationLibrary" uid="uid://1fqnc4lwlfun" path="res://Global/Entities/Enemies/Enemy/Animations/EnemyMove.res" id="2_do23a"]
 [ext_resource type="Texture2D" uid="uid://dsb6tv6epn1mh" path="res://Assets/Art/Characters/Handler-sheet.png" id="2_ib6va"]
-[ext_resource type="PackedScene" uid="uid://jmnf0fy8c8di" path="res://Global/Classes/hitbox.tscn" id="3_qicfr"]
+[ext_resource type="PackedScene" uid="uid://jmnf0fy8c8di" path="res://Global/Classes/Hitbox.tscn" id="3_qicfr"]
 [ext_resource type="AnimationLibrary" uid="uid://bpohnjdnr7cam" path="res://Global/Entities/Enemies/Enemy/Animations/EnemyAction.res" id="3_uyegr"]
 [ext_resource type="PackedScene" uid="uid://07qnueve2in3" path="res://Global/Entities/StateMachines/ActionStateMachine.tscn" id="4_nwqih"]
 [ext_resource type="Script" uid="uid://d0m28cl6gml5p" path="res://Global/Entities/Components/health_component.gd" id="4_r87u3"]

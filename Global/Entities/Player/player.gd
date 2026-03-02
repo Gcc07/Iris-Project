@@ -3,6 +3,7 @@ extends Entity
 
 var aim_position : Vector2 = Vector2(1, 0)
 
+
 @onready
 var attack_point = $AttackPoint
 
@@ -27,7 +28,6 @@ var hitbox = $Hitbox
 
 
 func _ready() -> void:
-
 	movement_state_machine.init(self, entity_sprite, move_animations, action_animations, player_move_component)
 	action_state_machine.init(self, entity_sprite, move_animations, action_animations, player_action_component)
 
@@ -57,18 +57,6 @@ func _process(delta: float) -> void:
 	action_state_machine.process_frame(delta)
 
 ## ----------------------------------- ##
-
-signal damaged(attack: Attack)
-
-func on_damaged(attack: Attack) -> void:
-	print("Going through: Enemy")
-	damaged.emit(attack)
-
-func _on_damaged(attack: Attack) -> void:
-	pass # Replace with function body.
-
-func on_health_changed(health: float) -> void:
-	pass # Replace with function body.
 
 #func const_wobble():
 	#if self.velocity.x <= 80 and self.velocity.x >= -80:

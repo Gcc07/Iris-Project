@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://be3mpsirj8rwt"]
+[gd_scene format=3 uid="uid://be3mpsirj8rwt"]
 
 [ext_resource type="Script" uid="uid://dq8rg7w5y8i6a" path="res://Global/Projectiles/projectile.gd" id="1_bc6xr"]
 [ext_resource type="Script" uid="uid://ch13tt26l8qwb" path="res://Global/Projectiles/Resources/projectile_resource.gd" id="2_gdlc3"]
@@ -8,31 +8,6 @@
 [sub_resource type="Resource" id="Resource_6kw5c"]
 resource_local_to_scene = true
 script = ExtResource("2_gdlc3")
-ID = ""
-stick_to_parent = false
-is_friendly = true
-damage = 5.0
-stuns = true
-max_pierce = 1
-time_to_live = 0.1
-rotate_collision_shape = 0.0
-rotate_hurtbox_shape = 0.0
-collision_size_corresponds_to_sprite = true
-hurtbox_size_corresponds_to_sprite = true
-breaks_on_collision = false
-sprite_texture = "uid://cca0o8n8lhrcp"
-num_of_frames = 1
-animation_is_continous = false
-has_animation = false
-parent_offset = Vector2(0, 0)
-scale_factor = Vector2(1, 1)
-initial_velocity = Vector2(0, 0)
-affected_by_gravity = false
-speed = 0.0
-acceleration = 0.0
-spin_speed = 0.0
-modulate_color = Color(0, 0, 0, 0)
-modulate_outline_color = Color(0.106, 0.122, 0.129, 1)
 metadata/_custom_type_script = "uid://ch13tt26l8qwb"
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_y6bbh"]
@@ -41,7 +16,7 @@ metadata/_custom_type_script = "uid://ch13tt26l8qwb"
 particle_flag_disable_z = true
 gravity = Vector3(0, 98, 0)
 
-[node name="Projectile" type="CharacterBody2D" node_paths=PackedStringArray("hurtbox", "timer", "sprite", "collision_shape", "hurtbox_shape") groups=["projectile"]]
+[node name="Projectile" type="CharacterBody2D" unique_id=416422600 node_paths=PackedStringArray("hurtbox", "timer", "sprite", "collision_shape", "hurtbox_shape") groups=["projectile"]]
 collision_layer = 4
 collision_mask = 128
 safe_margin = 3.363
@@ -53,26 +28,26 @@ collision_shape = NodePath("CollisionShape2D")
 hurtbox_shape = NodePath("ProjectileHurtbox/CollisionShape2D")
 projectile_resource = SubResource("Resource_6kw5c")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1168878738]
 z_index = 2
 material = ExtResource("3_g8pnk")
 texture = SubResource("PlaceholderTexture2D_y6bbh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1705881607]
 one_way_collision = true
 debug_color = Color(0.228855, 0.508907, 1, 0.42)
 
-[node name="ProjectileHurtbox" type="Area2D" parent="."]
+[node name="ProjectileHurtbox" type="Area2D" parent="." unique_id=599772486]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("4_mdg15")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHurtbox" unique_id=918632698]
 debug_color = Color(0.910174, 0.248337, 0.423644, 0.42)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=96162646]
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1790569051]
 visible = false
 amount = 20
 lifetime = 6.65
@@ -86,6 +61,6 @@ trail_enabled = true
 trail_lifetime = 0.27
 process_material = SubResource("ParticleProcessMaterial_joau3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1144794867]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

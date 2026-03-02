@@ -18,11 +18,20 @@ var actionAnimations: AnimationPlayer
 ## Refers to the parent entity
 var parent: CharacterBody2D ## So things that aren't just the player can use the state machine. (all entities)
 
-func play_sound() -> void:
+## Sound methods
+# Extra = non state assigned sound
+# State = sound assigned to state
+
+func play_state_sound() -> void:
 	AudioManager.create_audio(state_sound)
 	
 func play_sound_extra(extra: SoundEffect.SOUND_EFFECT_TYPE) -> void:
 	AudioManager.create_audio(extra)
+	
+func play_extra_sound_with_pitch_scale(extra: SoundEffect.SOUND_EFFECT_TYPE, pitch_scale: float) -> void:
+	AudioManager.create_audio_with_pitch_scale(extra, pitch_scale)
+
+# Base state methods
 
 func enter() -> void:
 	pass 

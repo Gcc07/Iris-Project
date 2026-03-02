@@ -118,13 +118,13 @@ func setup_projectile_animation():
 	var animation = Animation.new()
 	var track_index = animation.add_track(Animation.TYPE_VALUE)
 	
-	# Adjust this path to your actual Sprite location
+	# Setting the animation track path
 	animation.track_set_path(track_index, NodePath("Sprite2D:frame"))
 	
 	animation.length = projectile_resource.time_to_live
 	animation.loop = true  
 	
-	# Add keyframes
+	# Adding individual keyframes of the sprite frames
 	for i in range(projectile_resource.num_of_frames):
 		var time = (i * projectile_resource.time_to_live) / projectile_resource.num_of_frames
 		animation.track_insert_key(track_index, time, i)

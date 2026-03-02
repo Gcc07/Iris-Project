@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://d0m28cl6gml5p" path="res://Global/Entities/Components/health_component.gd" id="2_7necc"]
 [ext_resource type="Script" uid="uid://cql8acbpetak4" path="res://Global/Entities/Enemies/Enemy/UniqueComponents/enemy_move_component.gd" id="3_w41fc"]
 [ext_resource type="Script" uid="uid://h2y7udv1fy6s" path="res://Global/Entities/Enemies/Handler/UniqueComponents/handler_enemy_action_component.gd" id="4_o053h"]
-[ext_resource type="PackedScene" uid="uid://jmnf0fy8c8di" path="res://Global/Classes/hitbox.tscn" id="5_obfdl"]
+[ext_resource type="PackedScene" uid="uid://jmnf0fy8c8di" path="res://Global/Classes/Hitbox.tscn" id="5_obfdl"]
 [ext_resource type="PackedScene" uid="uid://07qnueve2in3" path="res://Global/Entities/StateMachines/ActionStateMachine.tscn" id="6_4i0jk"]
 [ext_resource type="SpriteFrames" uid="uid://b5y6nhfmyw6r2" path="res://Assets/Art/Characters/Handler_Sprite.aseprite" id="8_d8ri2"]
 [ext_resource type="Script" uid="uid://c077xtpgid0o6" path="res://Global/Entities/Components/state_label.gd" id="9_ldva7"]
@@ -136,7 +136,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"Move"]
+"values": [&"Idle"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_avsj1"]
@@ -318,7 +318,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_lofwy"]
 resource_name = "light_attack"
 length = 0.7
-loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -376,7 +375,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1, 0]
+"values": [1, 0, 1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -629,6 +628,7 @@ texture_progress = SubResource("GradientTexture2D_rjix3")
 texture_progress_offset = Vector2(2, 1)
 
 [node name="StateLabel" type="Label" parent="." unique_id=473429733 node_paths=PackedStringArray("movement_state_machine", "action_state_machine")]
+visible = false
 offset_left = -82.0
 offset_top = -90.0
 offset_right = 83.0
@@ -679,6 +679,7 @@ script = ExtResource("14_qku7y")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
 move_speed = 50.0
+state_sound = 4
 animation_name = "fall"
 
 [node name="ActionStateMachine" parent="." unique_id=664209110 node_paths=PackedStringArray("starting_state") instance=ExtResource("6_4i0jk")]

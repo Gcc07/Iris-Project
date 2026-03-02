@@ -9,8 +9,11 @@ var stunned_state : ActionState
 var action_component
 
 func enter() -> void:
-	# parent.hitbox.damaged.connect(_on_hitbox_damaged)
-	actionAnimations.play(str(parent.entity_id)+"Action/" + animation_name)
+	if not parent.hitbox.is_connected("damaged", _on_hitbox_damaged): # If the hitbox isn't connected,
+		parent.hitbox.damaged.connect(_on_hitbox_damaged) # Connect it.
+	
+	actionAnimations.play(str(parent.entity_id)+"Action/" + animation_name) # Plays the correpsonding animation
+	
 
 func _on_hitbox_damaged(attack: Attack):
 	if attack.stuns == true:
