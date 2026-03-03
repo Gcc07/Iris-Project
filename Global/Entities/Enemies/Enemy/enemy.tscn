@@ -76,37 +76,33 @@ radius = 66.4831
 radius = 7.0
 height = 14.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" unique_id=246064721]
 script = ExtResource("1_8aesk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1223212776]
 position = Vector2(0, -20)
 texture = ExtResource("2_ib6va")
 hframes = 7
 vframes = 4
 frame = 7
 
-[node name="Hitbox" parent="." instance=ExtResource("3_qicfr")]
+[node name="Hitbox" parent="." unique_id=1783019800 instance=ExtResource("3_qicfr")]
 position = Vector2(0, -7)
 
-[node name="AttackPoint" type="Node2D" parent="."]
+[node name="AttackPoint" type="Node2D" parent="." unique_id=1424649172]
 position = Vector2(0, -10)
 
-[node name="MoveAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_avsj1"),
-&"EnemyMove": ExtResource("2_do23a")
-}
+[node name="MoveAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1647249730]
+libraries/ = SubResource("AnimationLibrary_avsj1")
+libraries/EnemyMove = ExtResource("2_do23a")
 
-[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"EnemyAction": ExtResource("3_uyegr")
-}
+[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1010660826]
+libraries/EnemyAction = ExtResource("3_uyegr")
 
-[node name="HealthComponent" type="Node" parent="."]
+[node name="HealthComponent" type="Node" parent="." unique_id=193969889]
 script = ExtResource("4_r87u3")
 
-[node name="HealthLabel" type="Label" parent="."]
+[node name="HealthLabel" type="Label" parent="." unique_id=1448524339]
 offset_left = -40.0
 offset_top = -38.0
 offset_right = 40.0
@@ -119,7 +115,7 @@ vertical_alignment = 1
 uppercase = true
 script = ExtResource("6_k1scs")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HealthLabel"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HealthLabel" unique_id=1400021867]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25
@@ -137,46 +133,46 @@ texture_under = SubResource("GradientTexture2D_0jn2s")
 texture_progress = SubResource("GradientTexture2D_mdtkf")
 texture_progress_offset = Vector2(2, 1)
 
-[node name="EnemyMoveComponent" type="Node" parent="."]
+[node name="EnemyMoveComponent" type="Node" parent="." unique_id=1855738651]
 script = ExtResource("5_y62e2")
 
-[node name="NoticeBox" type="Area2D" parent="EnemyMoveComponent"]
+[node name="NoticeBox" type="Area2D" parent="EnemyMoveComponent" unique_id=1186506110]
 collision_layer = 0
 collision_mask = 7
 
-[node name="NoticeShape" type="CollisionShape2D" parent="EnemyMoveComponent/NoticeBox"]
+[node name="NoticeShape" type="CollisionShape2D" parent="EnemyMoveComponent/NoticeBox" unique_id=1907946966]
 shape = SubResource("CircleShape2D_c36mc")
 
-[node name="EnemyActionComponent" type="Node" parent="."]
+[node name="EnemyActionComponent" type="Node" parent="." unique_id=913045360]
 script = ExtResource("6_faoks")
 
-[node name="GroundCollision" type="CollisionShape2D" parent="."]
+[node name="GroundCollision" type="CollisionShape2D" parent="." unique_id=765451173]
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_pvppk")
 
-[node name="ActionStateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("4_nwqih")]
+[node name="ActionStateMachine" parent="." unique_id=585585291 node_paths=PackedStringArray("starting_state") instance=ExtResource("4_nwqih")]
 starting_state = NodePath("none")
 
-[node name="light" type="Node" parent="ActionStateMachine"]
+[node name="light" type="Node" parent="ActionStateMachine" unique_id=175863259]
 script = ExtResource("6_lwoos")
 
-[node name="heavy" type="Node" parent="ActionStateMachine"]
+[node name="heavy" type="Node" parent="ActionStateMachine" unique_id=1780593149]
 script = ExtResource("8_teoi8")
 
-[node name="none" type="Node" parent="ActionStateMachine"]
+[node name="none" type="Node" parent="ActionStateMachine" unique_id=1222049030]
 script = ExtResource("8_wa8xr")
 
-[node name="MoveStateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("5_dkqxv")]
+[node name="MoveStateMachine" parent="." unique_id=469083766 node_paths=PackedStringArray("starting_state") instance=ExtResource("5_dkqxv")]
 starting_state = NodePath("idle")
 
-[node name="move" type="Node" parent="MoveStateMachine"]
+[node name="move" type="Node" parent="MoveStateMachine" unique_id=412114839]
 script = ExtResource("6_am21n")
 
-[node name="idle" type="Node" parent="MoveStateMachine"]
+[node name="idle" type="Node" parent="MoveStateMachine" unique_id=674761276]
 script = ExtResource("7_lclfu")
 
-[node name="jump" type="Node" parent="MoveStateMachine"]
+[node name="jump" type="Node" parent="MoveStateMachine" unique_id=938342279]
 script = ExtResource("8_1dunk")
 
-[node name="fall" type="Node" parent="MoveStateMachine"]
+[node name="fall" type="Node" parent="MoveStateMachine" unique_id=1647381332]
 script = ExtResource("14_qn5lm")

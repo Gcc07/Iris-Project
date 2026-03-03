@@ -38,6 +38,7 @@ func _ready() -> void:
 
 ## Method from interactable
 func _interact(): 
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_ACCEPT)
 	interactable_component.is_interactable = false
 	
 	# Cutscene Effect
@@ -59,6 +60,7 @@ func _interact():
 	
 	if Input.is_action_just_pressed("escape"):
 		print("Escaped")
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_DENY)
 	if interaction_cancelled[0]:
 		print("Walked Away")
 	

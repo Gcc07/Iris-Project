@@ -55,3 +55,6 @@ func _process(delta: float) -> void:
 
 	movement_state_machine.process_frame(delta)
 	action_state_machine.process_frame(delta)
+
+func restore_movement_control() -> void:
+	movement_state_machine.take_control()

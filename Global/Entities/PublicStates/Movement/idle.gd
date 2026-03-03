@@ -17,16 +17,15 @@ func enter() -> void:
 func process_input(event: InputEvent) -> MovementState:
 	if get_jump() and parent.is_on_floor():
 		return jump_state
-	if get_movement_input() != 0.0:
+	if get_movement_input() != 0.0 and parent.can_move:
 		return move_state
-	#if Input.is_action_just_pressed('dash'):
-		#return dash_state
 	return null
 
 func process_physics(delta: float) -> MovementState:
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
-	
+	if get_movement_input() != 0.0 and parent.can_move:
+		return move_state
 	if !parent.is_on_floor():
 		return fall_state
 	return null

@@ -20,18 +20,24 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if (!using_pixel_shader):
+		ProjectSettings.set("display/window/size/viewport_width", 720)
+		ProjectSettings.set("display/window/size/viewport_height", 405)
 		if !cutscene_occuring:
 			var BASE_ZOOM = Vector2(1,1)
 			zoom = zoom.lerp(BASE_ZOOM, delta * 6)# Base Zoom
-			var target_position = target.global_position
-			position = position.lerp(target_position, delta * 6 )
-			global_position = position
+			if target:
+				var target_position = target.global_position
+				position = position.lerp(target_position, delta * 6 )
+				global_position = position
 		else:
 			zoom = zoom.lerp(cutscene_zoom, delta * 6)
 			position = position.lerp(cutscene_target, delta * 6 )
 			global_position = position
 		
 	if using_pixel_shader:
+		ProjectSettings.set("display/window/size/viewport_width", 1920)
+		ProjectSettings.set("display/window/size/viewport_height", 1080)
+		
 		if !cutscene_occuring:
 			var proper_target = Vector2(0,0)
 			if target:

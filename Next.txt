@@ -10,7 +10,7 @@ WORK ON:
 	
 	Fixing:
 	
-	Bug where player doesn't go into stun state when attacked (And possibly enemies as well)
+	Bug where player doesn't go into stun state when attacked (And possibly enemies as well) - Fixed..?
 	
 	Making:
 	
@@ -28,3 +28,6 @@ LORE
 	Remote Observation & Variance(Collection):ENTITY -> ROV:E
 	
 	RIMESTILL-Proj.v273.15 | Endothermic Vitreous:ENTITY -> REV:E
+
+STUFF: 
+	Window Unique (Without shader) : 720 x 405

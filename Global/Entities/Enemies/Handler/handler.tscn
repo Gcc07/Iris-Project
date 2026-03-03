@@ -627,7 +627,7 @@ rounded = true
 texture_progress = SubResource("GradientTexture2D_rjix3")
 texture_progress_offset = Vector2(2, 1)
 
-[node name="StateLabel" type="Label" parent="." unique_id=473429733 node_paths=PackedStringArray("movement_state_machine", "action_state_machine")]
+[node name="StateLabel" type="Label" parent="." unique_id=473429733 node_paths=PackedStringArray("movement_state_machine", "action_state_machine", "AnimatedSprite")]
 visible = false
 offset_left = -82.0
 offset_top = -90.0
@@ -642,6 +642,7 @@ uppercase = true
 script = ExtResource("9_ldva7")
 movement_state_machine = NodePath("../MoveStateMachine")
 action_state_machine = NodePath("../ActionStateMachine")
+AnimatedSprite = NodePath("../AnimatedSprite2D")
 
 [node name="GroundCollision" type="CollisionShape2D" parent="." unique_id=1774159602]
 position = Vector2(0, -7)
@@ -717,6 +718,7 @@ animation_name = "death"
 [node name="stunned" type="Node" parent="ActionStateMachine" unique_id=184366395 node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
 script = ExtResource("19_necso")
 none_state = NodePath("../none")
+is_always_stunned = true
 death_state = NodePath("../death")
 stunned_state = NodePath(".")
 animation_name = "stun"

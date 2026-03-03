@@ -28,15 +28,15 @@ func get_special_attack_input() -> bool:
 	return action_component.get_special_attack_input()
 
 func enter() -> void:
-	# Overwriting the enter statements in the action state
-	if not parent.hitbox.is_connected("damaged", _on_hitbox_damaged): # If the hitbox isn't connected,
-		parent.hitbox.damaged.connect(_on_hitbox_damaged) # Connect it.
-
 	parent.can_move = allow_movement
 	finished_attack = false
 	moveAnimations.active = false
 	actionAnimations.active = true
 	actionAnimations.play(str(parent.entity_id)+"Action/" + animation_name)
+		# Overwriting the enter statements in the action state
+	if not parent.hitbox.is_connected("damaged", _on_hitbox_damaged): # If the hitbox isn't connected,
+		parent.hitbox.damaged.connect(_on_hitbox_damaged) # Connect it.
+
 
 func exit() -> void:
 	actionAnimations.active = false

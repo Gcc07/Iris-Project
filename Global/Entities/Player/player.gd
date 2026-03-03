@@ -57,7 +57,6 @@ func _process(delta: float) -> void:
 	action_state_machine.process_frame(delta)
 
 ## ----------------------------------- ##
-
 #func const_wobble():
 	#if self.velocity.x <= 80 and self.velocity.x >= -80:
 		#player_sprite.rotation = 0
