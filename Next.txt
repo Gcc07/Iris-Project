@@ -12,6 +12,8 @@ WORK ON:
 	
 	Bug where player doesn't go into stun state when attacked (And possibly enemies as well) - Fixed..?
 	
+	Bug now where enemies get stuck in stun after being attack in succession
+	
 	Making:
 	
 	Backwards drawing of REN:J-E

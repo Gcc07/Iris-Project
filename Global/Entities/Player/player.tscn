@@ -233,7 +233,7 @@ state_sound = 10
 animation_name = "jump"
 
 [node name="ActionStateMachine" parent="." unique_id=1398814039 node_paths=PackedStringArray("starting_state") instance=ExtResource("11_8c3ms")]
-starting_state = NodePath("none")
+starting_state = NodePath("stunned")
 
 [node name="light" type="Node" parent="ActionStateMachine" unique_id=298242850 node_paths=PackedStringArray("none_state", "death_state", "stunned_state")]
 script = ExtResource("18_quk2k")
