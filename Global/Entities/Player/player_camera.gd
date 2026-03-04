@@ -11,17 +11,26 @@ var cutscene_occuring = false
 var cutscene_target : Vector2
 var cutscene_zoom : Vector2
 
+
 func _ready() -> void:
-	_subpixel_container = get_viewport().get_parent() as SubViewportContainer
-	if target:
-		actual_cam_pos = target.global_position
-		global_position = actual_cam_pos
+	if !using_pixel_shader:
+		call_deferred('get_tree().change_scene_to_file("res://Global/Scenes/Main.tscn")')
+		ProjectSettings.set("display/window/size/viewport_width", 720)
+		ProjectSettings.set("display/window/size/viewport_height", 405)
+	else:
+		call_deferred('get_tree().change_scene_to_file("res://Global/Scenes/Smoothfix.tscn")')
+		ProjectSettings.set("display/window/size/viewport_width", 1920)
+		ProjectSettings.set("display/window/size/viewport_height", 1080)
+
+		_subpixel_container = get_viewport().get_parent() as SubViewportContainer
+		if target:
+			actual_cam_pos = target.global_position
+			global_position = actual_cam_pos
 
 
 func _physics_process(delta: float) -> void:
 	if (!using_pixel_shader):
-		ProjectSettings.set("display/window/size/viewport_width", 720)
-		ProjectSettings.set("display/window/size/viewport_height", 405)
+		
 		if !cutscene_occuring:
 			var BASE_ZOOM = Vector2(1,1)
 			zoom = zoom.lerp(BASE_ZOOM, delta * 6)# Base Zoom
@@ -35,8 +44,7 @@ func _physics_process(delta: float) -> void:
 			global_position = position
 		
 	if using_pixel_shader:
-		ProjectSettings.set("display/window/size/viewport_width", 1920)
-		ProjectSettings.set("display/window/size/viewport_height", 1080)
+		
 		
 		if !cutscene_occuring:
 			var proper_target = Vector2(0,0)

@@ -165,7 +165,6 @@ position = Vector2(456, 136)
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=1013995571 node_paths=PackedStringArray("target")]
 script = ExtResource("10_8n0gi")
 target = NodePath("../Player")
-using_pixel_shader = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=870181331]
 
