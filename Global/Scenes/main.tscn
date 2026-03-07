@@ -1,186 +1,29 @@
-[gd_scene format=4 uid="uid://c5hvh64y4o77c"]
+[gd_scene format=3 uid="uid://b4vx1p12xni5j"]
 
-[ext_resource type="Texture2D" uid="uid://cuip4hetwmctt" path="res://Assets/Art/Tilesets/TMAP.png" id="1_3ptaa"]
-[ext_resource type="PackedScene" uid="uid://cly0gxqkuoiej" path="res://Global/Entities/Player/Player.tscn" id="2_w0ego"]
-[ext_resource type="Texture2D" uid="uid://dlmaqaklw4s14" path="res://Assets/Art/Concept/TestEnv.png" id="3_kvelk"]
-[ext_resource type="PackedScene" uid="uid://cqxlfhln76dxm" path="res://Global/Entities/Enemies/Handler/Handler.tscn" id="5_dknhj"]
-[ext_resource type="Script" uid="uid://cg3qeta413pu0" path="res://Global/Classes/hurtbox.gd" id="7_y5muh"]
-[ext_resource type="PackedScene" uid="uid://c7ibdequcmxh4" path="res://Global/Entities/NPCs/Wyrd/Wyrd.tscn" id="9_jbbcs"]
-[ext_resource type="Script" uid="uid://c7vi47ybajeqd" path="res://Global/Entities/Player/player_camera.gd" id="10_8n0gi"]
+[ext_resource type="PackedScene" uid="uid://c5hvh64y4o77c" path="res://Global/Scenes/Game.tscn" id="1_45k01"]
+[ext_resource type="PackedScene" uid="uid://dp25ebfh2jmkm" path="res://Global/Scenes/UI/PlayerUI.tscn" id="2_2n1qi"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_155du"]
-texture = ExtResource("1_3ptaa")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.179859, -8, 0.179859)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.179859, -8, 0.179859)
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.179859, -8, 0.179859)
-3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.179859, -8, 0.179859)
-4:0/0 = 0
-4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.179859, -8, 0.179859)
-5:0/0 = 0
-5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.179859, -8, 0.179859)
-6:0/0 = 0
-6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.179859, -8, 0.179859)
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:1/0 = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:2/0 = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:3/0 = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:1/0 = 0
-4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+[node name="Main" type="Control" unique_id=138082462]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[sub_resource type="TileSet" id="TileSet_vj60j"]
-physics_layer_0/collision_layer = 128
-physics_layer_0/collision_mask = 7
-sources/0 = SubResource("TileSetAtlasSource_155du")
+[node name="Game" parent="." unique_id=322069281 instance=ExtResource("1_45k01")]
 
-[sub_resource type="Shader" id="Shader_t0tcr"]
-code = "shader_type canvas_item;
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Game" unique_id=1340224071]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-// === User Controls ===
+[node name="SubViewport" type="SubViewport" parent="Game/SubViewportContainer" unique_id=1357478189]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(960, 540)
+render_target_update_mode = 4
 
-// Color of the outline
-uniform vec4 outline_color    : source_color = vec4(1.0);
-// How far to search around a pixel for solid neighbors (in texels)
-uniform float outline_size    : hint_range(0.0, 16.0, 0.1) = 1.0;
-// Minimum alpha for a pixel to be considered solid
-uniform float alpha_threshold : hint_range(0.0, 1.0, 0.01) = 0.0;
-// Number of directions to sample from (max 8)
-uniform int outline_samples   : hint_range(4, 8) = 4;
-// Color to blend with solid pixels (alpha is blend strength)
-uniform vec4 shade_color      : source_color = vec4(1.0, 1.0, 1.0, .5); 
-
-// === Outline Sampling Directions ===
-
-const vec2[8] DIRS = vec2[8]
-(vec2(1.0, 0.0), vec2(0.0, 1.0),  vec2(-1.0, 0.0),  vec2(0.0, -1.0),
- vec2(1.0, 1.0), vec2(-1.0, 1.0), vec2(-1.0, -1.0), vec2(1.0, -1.0));
-
-// === Main Fragment ===
-
-void fragment() {
-	vec4 tex = texture(TEXTURE, UV);
-	float alpha = tex.a;
-	
-	 // Skip fully transparent pixel with no outline
-	if (alpha <= 0.0 && outline_size <= 0.0) discard;
-
-	bool solid = alpha > alpha_threshold;
-	bool semi  = (alpha > 0.0) && !solid;
-	vec4 out_color = tex;
-
-	// Blend solid pixels toward the shade_color based on its alpha
-	if (solid && shade_color.a > 0.0) {
-		out_color.rgb = mix(tex.rgb, shade_color.rgb, shade_color.a);
-		out_color.a   = alpha;
-	}
-
-	bool found = false;
-
-	// If not solid, check surrounding pixels for solid neighbors
-	if (!solid && outline_size > 0.0) {
-		vec2 offset = TEXTURE_PIXEL_SIZE * outline_size;
-		for (int i = 0; i < outline_samples; i++) {
-			if (texture(TEXTURE, UV + DIRS[i] * offset).a > alpha_threshold) {
-				found = true;
-				break;
-			}
-		}
-	}
-
-	// Set final pixel color
-	if      (solid) COLOR = out_color;
-	else if (found) COLOR = outline_color;
-	else if (semi)  COLOR = tex;
-	else            discard;
-}
-
-//void light() {
-//	// Called for every pixel for every light affecting the CanvasItem.
-//	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5muh"]
-resource_local_to_scene = true
-shader = SubResource("Shader_t0tcr")
-shader_parameter/outline_color = Color(0.105882, 0.121569, 0.129412, 1)
-shader_parameter/outline_size = 1.0
-shader_parameter/alpha_threshold = 0.0
-shader_parameter/outline_samples = 8
-shader_parameter/shade_color = Color(1, 1, 1, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqi6v"]
-resource_local_to_scene = true
-shader = SubResource("Shader_t0tcr")
-shader_parameter/outline_color = Color(0.105882, 0.121569, 0.129412, 1)
-shader_parameter/outline_size = 1.0
-shader_parameter/alpha_threshold = 0.0
-shader_parameter/outline_samples = 8
-shader_parameter/shade_color = Color(1, 1, 1, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_djdpb"]
-
-[node name="Game" type="Node2D" unique_id=322069281]
-
-[node name="Wyrd" parent="." unique_id=362280782 instance=ExtResource("9_jbbcs")]
-position = Vector2(103, 238)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2039527668]
-z_index = 1
-tile_map_data = PackedByteArray("AAAAABAAAAAAAAAAAAABABAAAAABAAAAAAACABAAAAABAAAAAAADABAAAAABAAAAAAAEABAAAAABAAAAAAAFABAAAAABAAAAAAAGABAAAAABAAAAAAAHABAAAAABAAAAAAAIABAAAAABAAAAAAAJABAAAAABAAAAAAAKABAAAAABAAAAAAALABAAAAABAAAAAAAMABAAAAABAAAAAAANABAAAAABAAAAAAAOABAAAAABAAAAAAAPABAAAAABAAAAAAAQABAAAAABAAAAAAARABAAAAABAAAAAAASABAAAAABAAAAAAATABAAAAABAAAAAAAUABAAAAABAAAAAAAVABAAAAABAAAAAAAWABAAAAABAAAAAAAXABAAAAABAAAAAAAYABAAAAABAAAAAAAZABAAAAAFAAAAAAAaABAAAAAFAAAAAAAbABAAAAAFAAAAAAAcABAAAAAFAAAAAAAdABAAAAAGAAAAAAAXAA0AAAABAAEAAAAYAA0AAAACAAEAAAAZAAsAAAABAAEAAAAaAAsAAAADAAEAAAAbAA4AAAACAAEAAAAcAAkAAAABAAAAAAAYAAgAAAABAAAAAAAVAAYAAAABAAAAAAASAAQAAAABAAAAAAAOAAMAAAACAAAAAAAKAAMAAAACAAAAAAAFAAMAAAACAAAAAAAfABMAAAABAAAAAAAgABMAAAABAAAAAAAhABMAAAAFAAAAAAAeABMAAAAAAAAAAAAiABMAAAAGAAAAAAAjABEAAAAAAAAAAAAkABEAAAAGAAAAAAAXAA4AAAABAAIAAAAYAA4AAAACAAIAAAAXAA8AAAABAAMAAAAYAA8AAAACAAMAAAAZAA0AAAADAAEAAAAZAA4AAAADAAIAAAAZAA8AAAADAAMAAAAUAA8AAAABAAEAAAAVAA8AAAADAAEAAAAcAA4AAAADAAEAAAAaAA4AAAAEAAEAAAA=")
-tile_set = SubResource("TileSet_vj60j")
-
-[node name="Player" parent="." unique_id=596085116 instance=ExtResource("2_w0ego")]
-position = Vector2(240, 135)
-
-[node name="Handler" parent="." unique_id=445052551 instance=ExtResource("5_dknhj")]
-material = SubResource("ShaderMaterial_y5muh")
-position = Vector2(342, 89)
-
-[node name="Handler2" parent="." unique_id=308713955 instance=ExtResource("5_dknhj")]
-material = SubResource("ShaderMaterial_oqi6v")
-position = Vector2(456, 136)
-
-[node name="PlayerCamera" type="Camera2D" parent="." unique_id=1013995571 node_paths=PackedStringArray("target")]
-script = ExtResource("10_8n0gi")
-target = NodePath("../Player")
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=870181331]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1870060586]
-top_level = true
-motion_scale = Vector2(0.95, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1726346810]
-position = Vector2(32, 1)
-texture = ExtResource("3_kvelk")
-centered = false
-
-[node name="Hurtbox" type="Area2D" parent="." unique_id=217791652]
-script = ExtResource("7_y5muh")
-metadata/_custom_type_script = "uid://cg3qeta413pu0"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1581020871]
-position = Vector2(42, 246)
-shape = SubResource("RectangleShape2D_djdpb")
+[node name="PlayerUI" parent="Game/SubViewportContainer/SubViewport" unique_id=1437979512 instance=ExtResource("2_2n1qi")]

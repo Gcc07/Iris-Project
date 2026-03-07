@@ -7,14 +7,14 @@
 [ext_resource type="Material" uid="uid://dad2q3m7wbttr" path="res://Assets/Shaders/entity_shader.tres" id="3_6ctnb"]
 [ext_resource type="AnimationLibrary" uid="uid://bn7c4qjgnvlcx" path="res://Global/Entities/Player/Animations/PlayerMove.res" id="3_sa4b0"]
 [ext_resource type="Script" uid="uid://drxj12esmfjyt" path="res://Global/Entities/Player/player_action_component.gd" id="4_ywbxx"]
-[ext_resource type="PackedScene" uid="uid://c2njkfc01sgji" path="res://Global/Entities/StateMachines/move_state_machine.tscn" id="6_8sue5"]
+[ext_resource type="PackedScene" uid="uid://c2njkfc01sgji" path="res://Global/Entities/Components/StateMachines/move_state_machine.tscn" id="6_8sue5"]
 [ext_resource type="Script" uid="uid://d0m28cl6gml5p" path="res://Global/Entities/Components/health_component.gd" id="7_eu4vx"]
 [ext_resource type="Script" uid="uid://vdwjy5ar2b6m" path="res://Global/Entities/PublicStates/Movement/move.gd" id="7_jklmg"]
 [ext_resource type="PackedScene" uid="uid://dilt3hqkyqreg" path="res://Global/Entities/Components/InteractingComponent.tscn" id="7_n3wfa"]
 [ext_resource type="Script" uid="uid://bybtb1c113b3d" path="res://Global/Entities/PublicStates/Movement/idle.gd" id="9_3wfp4"]
 [ext_resource type="Script" uid="uid://c077xtpgid0o6" path="res://Global/Entities/Components/state_label.gd" id="10_6ctnb"]
 [ext_resource type="Script" uid="uid://bnycl8fb3yooy" path="res://Global/Entities/PublicStates/Movement/jump.gd" id="10_6iif7"]
-[ext_resource type="PackedScene" uid="uid://07qnueve2in3" path="res://Global/Entities/StateMachines/ActionStateMachine.tscn" id="11_8c3ms"]
+[ext_resource type="PackedScene" uid="uid://07qnueve2in3" path="res://Global/Entities/Components/StateMachines/ActionStateMachine.tscn" id="11_8c3ms"]
 [ext_resource type="Script" uid="uid://cagfc3bgpn4d6" path="res://Global/Entities/Player/PlayerStates/player_fall_state.gd" id="14_n3wfa"]
 [ext_resource type="Script" uid="uid://dte23sxxcf8c8" path="res://Global/Entities/Player/PlayerStates/player_stumble_state.gd" id="15_5xtan"]
 [ext_resource type="PackedScene" uid="uid://jmnf0fy8c8di" path="res://Global/Classes/Hitbox.tscn" id="18_3h6te"]
@@ -168,9 +168,9 @@ hitbox = NodePath("../Hitbox")
 
 [node name="StateLabel" type="Label" parent="." unique_id=510140247 node_paths=PackedStringArray("movement_state_machine", "action_state_machine", "AnimatedSprite")]
 offset_left = -81.0
-offset_top = -105.0
+offset_top = -116.0
 offset_right = 84.0
-offset_bottom = -58.0
+offset_bottom = -69.0
 text = "Move:
 Action:"
 label_settings = SubResource("LabelSettings_ffmis")

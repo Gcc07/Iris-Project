@@ -16,16 +16,18 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="IrisProject"
-run/main_scene="uid://dgty8b66q3gid"
+run/main_scene="uid://b4vx1p12xni5j"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [audio]
 
-buses/default_bus_layout="res://Utilities/Systems/Audio/default_bus_layout.tres"
+buses/default_bus_layout="res://Utilities/Audio/default_bus_layout.tres"
 
 [autoload]
 
-AudioManager="*res://Utilities/Systems/Audio/AudioManager.tscn"
+AudioManager="*res://Utilities/Audio/AudioManager.tscn"
+Settings="*uid://tmhocn5fiims"
+SceneLoader="*uid://dmm6emkaeujft"
 
 [debug]
 

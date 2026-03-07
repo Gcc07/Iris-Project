@@ -3,7 +3,10 @@ extends Camera2D
 # Controls Player Camera Logic.
 
 @export var target : Player
-@export var using_pixel_shader : bool
+@export var using_pixel_shader : bool = Settings.using_pixel_shader
+@export var main : String = "uid://b4vx1p12xni5j"
+@export var main_with_shader : String = "uid://dgty8b66q3gid"
+
 var actual_cam_pos : Vector2
 var _subpixel_container: SubViewportContainer
 
@@ -13,24 +16,36 @@ var cutscene_zoom : Vector2
 
 
 func _ready() -> void:
-	if !using_pixel_shader:
-		call_deferred('get_tree().change_scene_to_file("res://Global/Scenes/Main.tscn")')
-		ProjectSettings.set("display/window/size/viewport_width", 720)
-		ProjectSettings.set("display/window/size/viewport_height", 405)
-	else:
-		call_deferred('get_tree().change_scene_to_file("res://Global/Scenes/Smoothfix.tscn")')
-		ProjectSettings.set("display/window/size/viewport_width", 1920)
-		ProjectSettings.set("display/window/size/viewport_height", 1080)
+	Settings.using_pixel_shader = using_pixel_shader
+	
+	if !Settings.using_pixel_shader && !Settings.correct_scene_is_loaded[0] == 1:
+		print("Loading Main without pixel shader")
+		Settings.correct_scene_is_loaded[0] += 1
+		SceneLoader.load_scene(main)
 
+	if Settings.using_pixel_shader && !Settings.correct_scene_is_loaded[0] == 1:
+		print("Loading Main with pixel shader")
+		Settings.correct_scene_is_loaded[0] += 1
+		SceneLoader.load_scene(main_with_shader)
+
+	if Settings.using_pixel_shader && Settings.correct_scene_is_loaded[0] == 1:
 		_subpixel_container = get_viewport().get_parent() as SubViewportContainer
 		if target:
 			actual_cam_pos = target.global_position
 			global_position = actual_cam_pos
+		ProjectSettings.set("display/window/size/viewport_width", 1920)
+		ProjectSettings.set("display/window/size/viewport_height", 1080)
+		get_tree().root.content_scale_size = Vector2i(1920, 1080)
 
+	if !Settings.using_pixel_shader && Settings.correct_scene_is_loaded[0] == 1:
+		ProjectSettings.set("display/window/size/viewport_width", 720)
+		ProjectSettings.set("display/window/size/viewport_height", 405)
+		get_tree().root.content_scale_size = Vector2i(720, 405)
 
 func _physics_process(delta: float) -> void:
-	if (!using_pixel_shader):
-		
+	
+	if (!Settings.using_pixel_shader):
+
 		if !cutscene_occuring:
 			var BASE_ZOOM = Vector2(1,1)
 			zoom = zoom.lerp(BASE_ZOOM, delta * 6)# Base Zoom
@@ -38,15 +53,18 @@ func _physics_process(delta: float) -> void:
 				var target_position = target.global_position
 				position = position.lerp(target_position, delta * 6 )
 				global_position = position
-		else:
+
+		else: # Cutscene Occuring 
 			zoom = zoom.lerp(cutscene_zoom, delta * 6)
 			position = position.lerp(cutscene_target, delta * 6 )
 			global_position = position
-		
-	if using_pixel_shader:
-		
-		
+
+	if Settings.using_pixel_shader && _subpixel_container: # Make sure subpixel ocntainer exists
+
 		if !cutscene_occuring:
+			var BASE_ZOOM = Vector2(1,1)
+			zoom = zoom.lerp(BASE_ZOOM, delta * 6)
+			
 			var proper_target = Vector2(0,0)
 			if target:
 				proper_target = Vector2(target.global_position.x , target.global_position.y )
@@ -54,8 +72,8 @@ func _physics_process(delta: float) -> void:
 			var cam_subpixel_offset = actual_cam_pos.round() - actual_cam_pos
 			_subpixel_container.material.set_shader_parameter("cam_offset", cam_subpixel_offset)
 			global_position = actual_cam_pos.round()
-			
-		else: 
+
+		else: # Cutscene Occuring 
 			zoom = zoom.lerp(cutscene_zoom, delta * 6)
 			actual_cam_pos = actual_cam_pos.lerp(cutscene_target, delta * 6 )
 			var cam_subpixel_offset = actual_cam_pos.round() - actual_cam_pos

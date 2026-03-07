@@ -7,6 +7,7 @@ WORK ON:
 	Giving enemy random walking AI
 	Working on a dialogue system
 	Adding more enemies
+	Projectile Behavoir / Customization
 	
 	Fixing:
 	
