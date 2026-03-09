@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cly0gxqkuoiej"]
 
 [ext_resource type="Script" uid="uid://dk4dgxmfagupv" path="res://Global/Entities/Player/player.gd" id="1_kty55"]
+[ext_resource type="Script" uid="uid://crsxymyl81o0o" path="res://Global/Entities/Player/Resources/player_resource.gd" id="2_e1svy"]
 [ext_resource type="SpriteFrames" uid="uid://bwq3gllc5mrnu" path="res://Assets/Art/Characters/Renji_Sprite.aseprite" id="2_quk2k"]
 [ext_resource type="AnimationLibrary" uid="uid://dd4yvq0oqh767" path="res://Global/Entities/Player/Animations/PlayerAction.res" id="2_y8nmg"]
 [ext_resource type="Script" uid="uid://b423telj4t1ps" path="res://Global/Entities/Player/player_move_component.gd" id="3_5a672"]
@@ -15,6 +16,7 @@
 [ext_resource type="Script" uid="uid://c077xtpgid0o6" path="res://Global/Entities/Components/state_label.gd" id="10_6ctnb"]
 [ext_resource type="Script" uid="uid://bnycl8fb3yooy" path="res://Global/Entities/PublicStates/Movement/jump.gd" id="10_6iif7"]
 [ext_resource type="PackedScene" uid="uid://07qnueve2in3" path="res://Global/Entities/Components/StateMachines/ActionStateMachine.tscn" id="11_8c3ms"]
+[ext_resource type="Script" uid="uid://dqaf5vxg88lys" path="res://Global/Entities/Components/data_handler_component.gd" id="12_e1svy"]
 [ext_resource type="Script" uid="uid://cagfc3bgpn4d6" path="res://Global/Entities/Player/PlayerStates/player_fall_state.gd" id="14_n3wfa"]
 [ext_resource type="Script" uid="uid://dte23sxxcf8c8" path="res://Global/Entities/Player/PlayerStates/player_stumble_state.gd" id="15_5xtan"]
 [ext_resource type="PackedScene" uid="uid://jmnf0fy8c8di" path="res://Global/Classes/Hitbox.tscn" id="18_3h6te"]
@@ -28,6 +30,12 @@
 [ext_resource type="Script" uid="uid://c4e6rqyq4730p" path="res://Global/Entities/PublicStates/Action/parry_state.gd" id="24_ffmis"]
 [ext_resource type="Script" uid="uid://dyapo17frowtf" path="res://Global/Entities/PublicStates/Action/stunned_action_state.gd" id="25_6ctnb"]
 [ext_resource type="Resource" uid="uid://c480g76enp8d8" path="res://Global/Projectiles/Resources/parry_projectile_resource.tres" id="28_ckivy"]
+
+[sub_resource type="Resource" id="Resource_mrr3q"]
+script = ExtResource("2_e1svy")
+name = "Renji"
+amount_of_special_charges = 2
+metadata/_custom_type_script = "uid://crsxymyl81o0o"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_quk2k"]
 radius = 5.0
@@ -86,6 +94,7 @@ outline_color = Color(1, 0, 0, 1)
 [node name="Player" type="CharacterBody2D" unique_id=1932245538 groups=["player"]]
 collision_mask = 128
 script = ExtResource("1_kty55")
+resource = SubResource("Resource_mrr3q")
 entity_id = "Player"
 hostile = false
 
@@ -144,12 +153,17 @@ position = Vector2(0, -12)
 [node name="PlayerMoveComponent" type="Node" parent="." unique_id=1446149815]
 script = ExtResource("3_5a672")
 
-[node name="PlayerActionComponent" type="Node" parent="." unique_id=1734078872]
+[node name="PlayerActionComponent" type="Node" parent="." unique_id=1734078872 node_paths=PackedStringArray("data_handler_component")]
 script = ExtResource("4_ywbxx")
+data_handler_component = NodePath("../DataHandlerComponent")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=982567126 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("7_eu4vx")
 hitbox = NodePath("../Hitbox")
+
+[node name="DataHandlerComponent" type="Node" parent="." unique_id=1840901854 node_paths=PackedStringArray("special_attack_state")]
+script = ExtResource("12_e1svy")
+special_attack_state = NodePath("../ActionStateMachine/special")
 
 [node name="StateLabel" type="Label" parent="." unique_id=510140247 node_paths=PackedStringArray("movement_state_machine", "action_state_machine", "AnimatedSprite")]
 visible = false

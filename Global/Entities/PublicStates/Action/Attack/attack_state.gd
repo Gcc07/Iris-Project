@@ -1,6 +1,8 @@
 class_name AttackState
 extends ActionState
 
+signal special_attack
+
 @export
 var allow_movement : bool = false
 @export
@@ -15,6 +17,10 @@ var attack_projectile_resources : Array[ProjectileResource]
 @onready var finished_attack : bool = false
 
 var projectile : PackedScene = preload("uid://be3mpsirj8rwt")
+
+func signal_special():
+	print("signalling special from special.")
+	special_attack.emit()
 
 # Pass the inputs from the action components into the sub-states
 

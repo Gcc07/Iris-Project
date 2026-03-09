@@ -265,6 +265,9 @@ func destroy_projectile(delay: float = 0):
 func _destroy_timer_timout():
 	queue_free()
 
+## This is the parry logic. 
+## I'm not sure if it should be seperate from the projectile itself, but oh well...
+
 func _on_projectile_hurtbox_area_entered(area: Area2D) -> void:
 	if area is Hurtbox && area.parent_projectile:
 		# print(projectile_owner if projectile_owner else "No Owner" , ": ", area)
@@ -275,7 +278,7 @@ func _on_projectile_hurtbox_area_entered(area: Area2D) -> void:
 				print(projectile_owner.name, " can parry " + area.parent_projectile.projectile_resource.ID)
 				
 				incoming_projectile_parried.emit()
-				projectile_owner.just_successfully_parried == true
+				projectile_owner.just_successfully_parried = true
 				
 				AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PARRY)
 				

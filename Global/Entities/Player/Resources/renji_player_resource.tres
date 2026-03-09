@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayerResource" format=3 uid="uid://cwr2huwwpdqfx"]
+
+[ext_resource type="Script" uid="uid://crsxymyl81o0o" path="res://Global/Entities/Player/Resources/player_resource.gd" id="1_g1k5w"]
+
+[resource]
+script = ExtResource("1_g1k5w")
+name = "Renji"
+metadata/_custom_type_script = "uid://crsxymyl81o0o"

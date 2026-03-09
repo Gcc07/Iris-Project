@@ -1,8 +1,6 @@
 class_name Player
 extends Entity
 
-var aim_position : Vector2 = Vector2(1, 0)
-
 @onready
 var attack_point = $AttackPoint
 
@@ -25,6 +23,9 @@ var player_action_component = $PlayerActionComponent
 @onready
 var hitbox = $Hitbox
 
+@export 
+var resource : PlayerResource
+
 
 func _ready() -> void:
 	movement_state_machine.init(self, entity_sprite, move_animations, action_animations, player_move_component)
@@ -32,10 +33,6 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-
-	if event is InputEventMouseMotion:
-		var half_viewport = get_viewport_rect().size / 2
-		aim_position = (event.position - half_viewport)
 
 	movement_state_machine.process_input(event)
 	action_state_machine.process_input(event)

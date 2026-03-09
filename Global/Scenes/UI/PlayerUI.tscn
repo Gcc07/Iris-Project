@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cd7xc4daxs03y" path="res://Global/Entities/Player/player_data.gd" id="1_84j6u"]
 [ext_resource type="Texture2D" uid="uid://dylwru3yvwn6d" path="res://Assets/Art/UI/PlayerUI.aseprite" id="1_flfsf"]
 [ext_resource type="Texture2D" uid="uid://dkcuw4fw6ouoa" path="res://Assets/Art/UI/Resources/health_gradient.tres" id="3_atsq0"]
+[ext_resource type="Texture2D" uid="uid://cj83840ti47se" path="res://Assets/Art/UI/Special_Extension_Container_UI.aseprite" id="4_s50ei"]
+[ext_resource type="Texture2D" uid="uid://bsgy26u3lyyfs" path="res://Assets/Art/UI/Special_Extension_UI.aseprite" id="5_af5ue"]
 
 [sub_resource type="Gradient" id="Gradient_s50ei"]
 colors = PackedColorArray(0.227451, 0.247059, 0.368627, 1, 0.227451, 0.247059, 0.368627, 1)
@@ -23,7 +25,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Player Data" type="TextureRect" parent="." unique_id=670940278 node_paths=PackedStringArray("healthBar")]
+[node name="Player Data" type="TextureRect" parent="." unique_id=670940278 node_paths=PackedStringArray("healthBar", "specialContainers", "specialOrbs")]
 z_index = 2
 texture_filter = 1
 layout_mode = 1
@@ -37,6 +39,8 @@ texture = ExtResource("1_flfsf")
 stretch_mode = 4
 script = ExtResource("1_84j6u")
 healthBar = NodePath("HealthBar")
+specialContainers = NodePath("Special_Containers")
+specialOrbs = NodePath("Special_Orbs")
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="TextureProgressBar" parent="Player Data" unique_id=1445772835]
@@ -54,3 +58,27 @@ rounded = true
 texture_under = SubResource("GradientTexture2D_af5ue")
 texture_progress = ExtResource("3_atsq0")
 metadata/_edit_use_anchors_ = true
+
+[node name="Special_Containers" type="VBoxContainer" parent="Player Data" unique_id=1677409025]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 53.0
+offset_right = 71.0
+offset_bottom = 62.0
+
+[node name="Container" type="TextureRect" parent="Player Data/Special_Containers" unique_id=1601641250]
+layout_mode = 2
+texture = ExtResource("4_s50ei")
+stretch_mode = 1
+
+[node name="Special_Orbs" type="VBoxContainer" parent="Player Data" unique_id=2003682841]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 53.0
+offset_right = 71.0
+offset_bottom = 62.0
+
+[node name="Orb" type="TextureRect" parent="Player Data/Special_Orbs" unique_id=1156244078]
+layout_mode = 2
+texture = ExtResource("5_af5ue")
+stretch_mode = 1
