@@ -12,12 +12,12 @@ func _ready():
 	
 func _on_attack_detector_area_body_entered(body):
 	if body is Player:
-		print("Player has entered enemy attack zone.")
+		# print("Player has entered enemy attack zone.")
 		target_is_in_attack_detector_area = true
 		target = body
 	
 func _on_attack_detector_area_body_exited(body):
-	print("Player has exited the enemy attack zone.")
+	# print("Player has exited the enemy attack zone.")
 	target = null
 	target_is_in_attack_detector_area = false
 

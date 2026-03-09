@@ -1,6 +1,7 @@
 class_name Projectile
 extends CharacterBody2D
 
+signal incoming_projectile_parried
 
 @export_group("Reference Properties")
 
@@ -10,12 +11,17 @@ extends CharacterBody2D
 @export var collision_shape : CollisionShape2D
 @export var hurtbox_shape : CollisionShape2D
 
+
 ## The resource containing all information about a projectile's data.
 @export var projectile_resource : ProjectileResource
 
 @onready var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var pierces_left : int
 @onready var applied_initial_velocity = false
+@onready var current_pierce_count := 0
+@onready var parryable : bool
+@onready var acts_as_parry : bool
+@onready var projectile_owner : Entity
 
 func _ready() -> void:
 
@@ -28,12 +34,13 @@ func _ready() -> void:
 	set_hurtbox_size_equals_sprite(projectile_resource.hurtbox_size_corresponds_to_sprite)
 	set_attack_sprite(projectile_resource.sprite_texture)
 	
-	
 	initialize_projectile_frames(projectile_resource.num_of_frames)
 	setup_projectile_animation()
 	start_animation(projectile_resource.animation_is_continous)
 	
 	initialize_is_friendly(projectile_resource.is_friendly)
+	initialize_can_be_parried(projectile_resource.is_parryable)
+	initialize_has_parry_function(projectile_resource.functions_as_parry)
 	start_timer()
 
 	if hurtbox:
@@ -42,7 +49,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	control_projectile_animations(projectile_resource.has_animation, projectile_resource.animation_is_continous)
 
-var current_pierce_count := 0
+
+
+
 
 func initialize_color_modulation(color):
 	#if not color == Color(255,255,255,255):
@@ -53,23 +62,49 @@ func initialize_color_modulation(color):
 func initialize_outline_color_modulation(color):
 	$Sprite2D.material.set_shader_parameter("outline_color", color)
 
-func initialize_is_friendly(friendly):
+func initialize_is_friendly(friendly : bool):
 	if friendly:
-		hurtbox.collision_mask = 2 # if friendly, set the collision mask to enemies
+		hurtbox.collision_mask = 2 + 4 # if friendly, set the collision mask to enemies (Value based, not bit based)
 	else:
-		hurtbox.collision_mask = 1 # if not, set the collision mask to player
+		hurtbox.collision_mask = 1 + 4 # if not, set the collision mask to player
 
+func initialize_has_parry_function(has_parry_function : bool):
+	acts_as_parry = has_parry_function
+	#if has_parry_function:
+		#hurtbox.collision_layer = 67
+#
+func initialize_can_be_parried(is_parryable : bool):
+	parryable = is_parryable
+	#if parryable && !projectile_resource.is_friendly:
+		#hurtbox.collision_mask = 64
+		
 func initialize_projectile_frames(num_of_frames):
 	sprite.vframes = num_of_frames
 
-func initialize_collision_and_hurtbox_shapes(collision, hurtbox):
-	collision_shape.shape = projectile_resource.collision_shape
-	hurtbox_shape.shape = projectile_resource.hurtbox_shape
+func initialize_collision_and_hurtbox_shapes(collision, new_hurtbox):
+	collision_shape.shape = get_or_create_collision_shape()
+	hurtbox_shape.shape = get_or_create_hurtbox_shape()
+
+func get_or_create_collision_shape() -> Shape2D:
+	if projectile_resource.collision_shape:
+		return projectile_resource.collision_shape
+	else:
+		var circle = CircleShape2D.new()
+		circle.radius = 4
+		return circle
+
+func get_or_create_hurtbox_shape() -> Shape2D:
+	if projectile_resource.hurtbox_shape:
+		return projectile_resource.hurtbox_shape
+	else:
+		var circle = CircleShape2D.new()
+		circle.radius = 4
+		return circle
 
 func set_collision_size_equals_sprite(on: bool) -> void:
-	var actual_sprite_height = load(projectile_resource.sprite_texture).get_height() / (projectile_resource.num_of_frames) # Returns height (accounting for animated sprite frames)
-	var actual_sprite_width = load(projectile_resource.sprite_texture).get_width()
 	if on:
+		var actual_sprite_height = load(projectile_resource.sprite_texture).get_height() / (projectile_resource.num_of_frames) # Returns height (accounting for animated sprite frames)
+		var actual_sprite_width = load(projectile_resource.sprite_texture).get_width()
 		if collision_shape.shape.is_class("CapsuleShape2D"):
 			#collision_shape.shape.set_radius(load(projectile_resource.sprite_texture).get_height()/2)
 			collision_shape.shape.set_radius(actual_sprite_height/2)
@@ -83,9 +118,9 @@ func set_collision_size_equals_sprite(on: bool) -> void:
 	
 
 func set_hurtbox_size_equals_sprite(on: bool) -> void:
-	var actual_sprite_height = load(projectile_resource.sprite_texture).get_height() / (projectile_resource.num_of_frames) # Returns height (accounting for animated sprite frames)
-	var actual_sprite_width = load(projectile_resource.sprite_texture).get_width()
 	if on:
+		var actual_sprite_height = load(projectile_resource.sprite_texture).get_height() / (projectile_resource.num_of_frames) # Returns height (accounting for animated sprite frames)
+		var actual_sprite_width = load(projectile_resource.sprite_texture).get_width()
 		if hurtbox_shape.shape.is_class("CapsuleShape2D"):
 			#collision_shape.shape.set_radius(load(projectile_resource.sprite_texture).get_height()/2)
 			hurtbox_shape.shape.set_radius(actual_sprite_height/2)
@@ -98,7 +133,8 @@ func set_hurtbox_size_equals_sprite(on: bool) -> void:
 			hurtbox_shape.shape.set_size(Vector2(actual_sprite_width, actual_sprite_height))
 
 func set_attack_sprite(texture: String) -> void:
-	sprite.texture = load(texture)
+	if texture:
+		sprite.texture = load(texture)
 
 # This should probably get reworked. Its my current system for both initializing
 # as well as controlling projectile animations without using an animation tree.
@@ -146,32 +182,6 @@ func start_animation(continuous: bool):
 			animation.loop_mode = Animation.LOOP_NONE
 			animation_player.play("default/projectile_anim")
 
-
-
-
-## The code below sets the intervals at which the projectile will change frames. (If applicable.)
-	#var interval_array : Array = []
-	#var interval : float = projectile_resource.time_to_live / projectile_resource.num_of_frames
-	#var last_appended_interval : float = -snapped(interval, .1)
-	#for i in range(0 , projectile_resource.num_of_frames):
-		#last_appended_interval += snapped(interval, .1)
-		#interval_array.append(last_appended_interval) 
-	#
-	#if active && continous:
-#
-		#if snapped(timer.time_left, 0.0001) in interval_array:
-			#sprite.frame += 1
-			#if sprite.frame == projectile_resource.num_of_frames:
-				#sprite.frame = 0
-#
-	#elif active && ! continous:
-		#if snapped(timer.time_left, 0.0001) in interval_array && sprite.frame != projectile_resource.num_of_frames:
-			#sprite.frame += 1
-	#else:
-		#pass
-
-
-
 # Projectile physics. This controls the rotation, movement, and more of the projectile.
 # Okay system right now? It could probably be better. It just checks for if the projectile
 # Wants certain logic, but this could restrict the logic to a few choices in the future. Maybe
@@ -184,9 +194,8 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision.get_collider().name == "TileMapLayer":
-			destroy_projectile()
+			call_deferred("destroy_projectile")
 
-	
 	if !applied_initial_velocity:
 		self.velocity.y = -300
 		applied_initial_velocity = true
@@ -206,7 +215,6 @@ func _physics_process(delta: float) -> void:
 				self.velocity.x =  projectile_resource.speed * 1
 	else:
 		pass
-		#self.velocity.x = 0
 
 	if projectile_resource.affected_by_gravity:
 		self.velocity.y += gravity * delta
@@ -214,17 +222,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		if self.is_on_floor():
 			self.velocity.x = lerp(self.velocity.x, 0.0, 3*delta)
-			
-		#for i in get_slide_collision_count():
-			#var collision = get_slide_collision(i)
-			#print("Collided with: ", collision.get_collider().name)
-			#if collision.get_collider().name == "TileMapLayer":
-				#is_colliding_with_ground = true
-				#
-				# self.velocity.x = lerp(self.velocity.x, 0.0, 1)
-				#destroy_projectile(3)
-			#else: 
-				#is_colliding_with_ground = false
+
 
 func do_rotation(delta: float):
 	if projectile_resource.spin_speed > 0: 
@@ -266,3 +264,27 @@ func destroy_projectile(delay: float = 0):
 
 func _destroy_timer_timout():
 	queue_free()
+
+func _on_projectile_hurtbox_area_entered(area: Area2D) -> void:
+	if area is Hurtbox && area.parent_projectile:
+		# print(projectile_owner if projectile_owner else "No Owner" , ": ", area)
+		# If the incoming projectile has a parent / orgin,
+			var incoming_projectile = area.parent_projectile.projectile_resource # get its resource
+			# If the incoming projectile is parryable, and it's hostility matches that of the projectile owner, and this projectile functions as a parry
+			if incoming_projectile.is_parryable  &&  incoming_projectile.is_friendly == projectile_owner.hostile  &&  projectile_resource.functions_as_parry:
+				print(projectile_owner.name, " can parry " + area.parent_projectile.projectile_resource.ID)
+				
+				incoming_projectile_parried.emit()
+				projectile_owner.just_successfully_parried == true
+				
+				AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PARRY)
+				
+				if incoming_projectile.remove_upon_being_parried:
+					area.parent_projectile.destroy_projectile()
+					
+				if incoming_projectile.stun_projectile_owner_upon_being_parried:
+					area.parent_projectile.projectile_owner.stunned = true
+
+				GlobalUtil.engine_speed_slow_to_normal_transition(0, .1)
+				
+				

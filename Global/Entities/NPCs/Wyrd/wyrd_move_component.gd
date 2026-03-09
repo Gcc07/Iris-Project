@@ -16,7 +16,7 @@ func _ready():
 	
 func _on_notice_box_body_entered(body):
 	if body is Player:
-		print("Player has entered.")
+		# print("Player has entered.")
 		attention_box.get_child(0).shape.radius = get_parent().AI_pursue_radius
 		is_player_in_area = true
 		target = body
@@ -24,7 +24,7 @@ func _on_notice_box_body_entered(body):
 func _on_notice_box_body_exited(body):
 	if body is Player:
 		# var tween = create_tween()
-		print("Player has exited.")
+		# print("Player has exited.")
 		is_player_in_area = false
 		target = null
 		#tween.tween_property(attention_box.get_child(0).shape, "radius", get_parent().AI_notice_radius, .5) This changes the notice box back to the original through a tween.
@@ -41,10 +41,10 @@ func _on_jump_line_body_exited(body):
 		is_player_in_area = false
 
 func get_movement_direction() -> float:
-	var direction = Vector2(0,0)
+	var _direction = Vector2.ZERO
 	var velocity_x = 0.0
 	if is_player_in_area:
-		direction = target.global_position - get_parent().global_position
+		_direction = target.global_position - get_parent().global_position
 		#velocity_x = snapped(direction.normalized().x,1)
 		# print(velocity_x, get_parent().name)
 		return velocity_x

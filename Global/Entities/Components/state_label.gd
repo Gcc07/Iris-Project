@@ -5,9 +5,8 @@ extends Label
 @export var action_state_machine : Node2D
 @export var AnimatedSprite : AnimatedSprite2D
 
-func _ready() -> void:
-	pass
-
 func _process(delta: float) -> void:
+	visible = Settings.using_entity_debug_texts
 	var frame = str(AnimatedSprite.frame)
-	text = " \nAction: " + action_state_machine.current_state.name + " \nMove: " + movement_state_machine.current_state.name + " \nSprite State: " + AnimatedSprite.animation + " : " + frame
+	var velocity = str(get_parent().velocity)
+	text = " \nAction: " + action_state_machine.current_state.name + " \nMove: " + movement_state_machine.current_state.name + " \nSprite State: " + AnimatedSprite.animation + " : " + frame + "\nVelocity: " + velocity 

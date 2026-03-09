@@ -56,3 +56,11 @@ extends Resource
 @export var modulate_color : Color = Color(0,0,0,0)
 ## Modulate outline color of projectile
 @export var modulate_outline_color : Color = Color(0.106, 0.122, 0.129)
+## Is the projectile Parryable
+@export var is_parryable : bool = true
+## has parry property
+@export var functions_as_parry : bool = false
+## Deletes the projectile upon being parried
+@export var remove_upon_being_parried : bool = false
+## If the projectile is parried, it causes the entity owner to be stunned
+@export var stun_projectile_owner_upon_being_parried : bool = true

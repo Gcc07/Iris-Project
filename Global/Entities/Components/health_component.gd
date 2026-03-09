@@ -18,7 +18,7 @@ func _ready():
 		hitbox.damaged.connect(on_damaged)
 
 func on_damaged(attack: Attack):
-	print("attacked: Health: ", attack.damage, " damage")
+	# print("attacked: Health: ", attack.damage, " damage")
 	if !thing_being_attacked.alive:
 		return
 	

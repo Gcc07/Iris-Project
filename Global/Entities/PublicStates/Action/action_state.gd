@@ -16,7 +16,7 @@ func enter() -> void:
 	
 
 func _on_hitbox_damaged(attack: Attack):
-	if attack.stuns == true:
+	if attack.stuns == true && parent.can_be_damaged:
 		parent.stunned = true
 
 # Pass the inputs from the action components into the sub-states

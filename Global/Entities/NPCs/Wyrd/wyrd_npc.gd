@@ -30,8 +30,9 @@ var AI_pursue_radius := 100.0
 
 
 func _ready() -> void:
-	interactable_component.interact = _interact # Overridden interact within interactable component
-	interactable_component.end_interaction = _end_interaction
+	if interactable_component:
+		interactable_component.interact = _interact # Overridden interact within interactable component
+		interactable_component.end_interaction = _end_interaction
 	
 	if movement_state_machine:		movement_state_machine.init(self, entity_sprite, move_animations, action_animations, move_component)
 	if action_state_machine:		action_state_machine.init(self, entity_sprite, move_animations, action_animations, action_component)

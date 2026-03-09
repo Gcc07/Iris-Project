@@ -18,7 +18,7 @@ gravity = Vector3(0, 98, 0)
 
 [node name="Projectile" type="CharacterBody2D" unique_id=416422600 node_paths=PackedStringArray("hurtbox", "timer", "sprite", "collision_shape", "hurtbox_shape") groups=["projectile"]]
 collision_layer = 4
-collision_mask = 128
+collision_mask = 132
 safe_margin = 3.363
 script = ExtResource("1_bc6xr")
 hurtbox = NodePath("ProjectileHurtbox")
@@ -63,4 +63,5 @@ process_material = SubResource("ParticleProcessMaterial_joau3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1144794867]
 
+[connection signal="area_entered" from="ProjectileHurtbox" to="." method="_on_projectile_hurtbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -6,5 +6,5 @@ extends Area2D
 signal damaged(attack: Attack)
 
 func damage(attack: Attack):
-	print("attacked: " + get_parent().entity_id +  " Hitbox")
+	# print("attacked: " + get_parent().entity_id +  " Hitbox")
 	damaged.emit(attack)

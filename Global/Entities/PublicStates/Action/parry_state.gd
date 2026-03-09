@@ -1,9 +1,8 @@
 class_name ParryState
-extends ActionState
+extends AttackState
 
 # The State for when an Entity is parrying
 
-@export var none_state : ActionState
 @export var parry_time : float = .2
 
 @onready var parry_timer : Timer
@@ -17,11 +16,14 @@ func enter() -> void:
 	actionAnimations.play(str(parent.entity_id)+"Action/" + animation_name) # Plays the correpsonding animation
 	parry_timer.start()
 	parent.can_move = true
-	parent.can_be_damaged = false
 	actionAnimations.active = true
 	moveAnimations.active = false
 
+func toggle_entity_can_be_damaged():
+	parent.can_be_damaged = !parent.can_be_damaged
+
 func _ready(): 
+	
 	parry_timer = Timer.new() 
 	parry_timer.wait_time = parry_time
 	parry_timer.one_shot = true 
@@ -32,6 +34,8 @@ func _on_timer_timeout():
 	parent.parrying = false
 
 func process_physics(delta: float) -> ActionState:
+	if parent.stunned:
+		return stunned_state
 	if not parent.parrying:
 		return none_state
 	else: 
@@ -39,4 +43,5 @@ func process_physics(delta: float) -> ActionState:
 
 func exit() -> void:
 	parent.parrying = false
+	parent.can_be_damaged = true
 	actionAnimations.active = false

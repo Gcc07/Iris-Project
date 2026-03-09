@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var can_be_damaged := true
 @export var stunned := false
 @export var parrying := false
+@export var just_successfully_parried := false
 
 @export var status_effects_array : Array = []
 #

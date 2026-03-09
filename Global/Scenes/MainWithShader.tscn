@@ -10,8 +10,9 @@ shader_parameter/cam_offset = Vector2(0, 0)
 
 [node name="Smoothfix" type="Control" unique_id=2033457927]
 layout_mode = 3
-anchor_right = 2.0
-anchor_bottom = 2.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -20,20 +21,17 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_xknwu")
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.3333334
-anchor_bottom = 1.3333334
-offset_right = -2880.0
-offset_bottom = -1620.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
 size_flags_horizontal = 0
-metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=167706074]
 handle_input_locally = false
-size = Vector2i(960, 540)
+size = Vector2i(480, 270)
 render_target_update_mode = 4
 
 [node name="Game" parent="SubViewportContainer/SubViewport" unique_id=305491533 instance=ExtResource("1_66get")]
@@ -56,6 +54,4 @@ handle_input_locally = false
 size = Vector2i(480, 270)
 render_target_update_mode = 4
 
-[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer2/SubViewport" unique_id=1957635941]
-
-[node name="PlayerUI" parent="SubViewportContainer2/SubViewport/CanvasLayer" unique_id=328153579 instance=ExtResource("3_xknwu")]
+[node name="PlayerUI" parent="SubViewportContainer2/SubViewport" unique_id=328153579 instance=ExtResource("3_xknwu")]

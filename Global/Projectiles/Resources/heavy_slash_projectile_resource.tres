@@ -16,6 +16,7 @@ damage = 3.0
 time_to_live = 0.2
 collision_shape = SubResource("CapsuleShape2D_l5onv")
 hurtbox_shape = SubResource("CapsuleShape2D_y1j4r")
+rotate_collision_shape = 90.0
 rotate_hurtbox_shape = 90.0
 sprite_texture = "uid://bgu0xph64jq36"
 num_of_frames = 3

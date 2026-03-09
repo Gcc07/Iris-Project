@@ -20,6 +20,10 @@ enum SOUND_EFFECT_TYPE {
 	PARRY2,
 	UI_ACCEPT,
 	UI_DENY,
+	FWOOSH,
+	WHIP,
+	WOOSH,
+	DAMAGED_1,
 }
 
 @export_range(0, 10) var limit: int = 5 ## Maximum number of this SoundEffect to play simultaneously before culled.

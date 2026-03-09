@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://doiioccovtsad"]
+
+[ext_resource type="Script" uid="uid://tmhocn5fiims" path="res://Utilities/Backend/Settings.gd" id="1_qseku"]
+
+[node name="Settings" type="Node2D" unique_id=1926665886]
+script = ExtResource("1_qseku")
+using_pixel_shader = false
+using_entity_debug_texts = false

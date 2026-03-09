@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ProjectileResource" format=3 uid="uid://c480g76enp8d8"]
+
+[ext_resource type="Script" uid="uid://ch13tt26l8qwb" path="res://Global/Projectiles/Resources/projectile_resource.gd" id="1_ss3r1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ss3r1"]
+radius = 20.0
+
+[resource]
+script = ExtResource("1_ss3r1")
+ID = "basic_parry"
+stick_to_parent = true
+damage = 0.0
+stuns = false
+time_to_live = 0.2
+hurtbox_shape = SubResource("CircleShape2D_ss3r1")
+collision_size_corresponds_to_sprite = false
+hurtbox_size_corresponds_to_sprite = false
+sprite_texture = ""
+parent_offset = Vector2(0, -15)
+is_parryable = false
+functions_as_parry = true
+metadata/_custom_type_script = "uid://ch13tt26l8qwb"

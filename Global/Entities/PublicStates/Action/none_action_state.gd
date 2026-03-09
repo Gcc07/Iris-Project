@@ -18,7 +18,7 @@ func enter() -> void:
 	moveAnimations.play(&"RESET") ## CAUSES WEIRD ISSUE WHERE ATTACK PLAYS TWICE
 	# I don't like it, (because its a direct call on the move animations, 
 	# but i guess thats why i gave both state machines access to each other...)
-	moveAnimations.play(str(parent.entity_id) + "Move/" + parent.movement_state_machine.current_state.animation_name)
+	moveAnimations.play_section(str(parent.entity_id) + "Move/" + parent.movement_state_machine.current_state.animation_name)
 	
 	parent.can_move = true
 	actionAnimations.active = false

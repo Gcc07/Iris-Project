@@ -3,7 +3,6 @@ extends Entity
 
 var aim_position : Vector2 = Vector2(1, 0)
 
-
 @onready
 var attack_point = $AttackPoint
 

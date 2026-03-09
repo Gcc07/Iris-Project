@@ -13,17 +13,15 @@ grow_vertical = 2
 
 [node name="Game" parent="." unique_id=322069281 instance=ExtResource("1_45k01")]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Game" unique_id=1340224071]
-anchors_preset = 15
-anchor_right = 1.0
+[node name="CanvasLayer2" type="CanvasLayer" parent="Game" unique_id=564347494]
+
+[node name="Control" type="Control" parent="Game/CanvasLayer2" unique_id=877838898]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
-[node name="SubViewport" type="SubViewport" parent="Game/SubViewportContainer" unique_id=1357478189]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(960, 540)
-render_target_update_mode = 4
-
-[node name="PlayerUI" parent="Game/SubViewportContainer/SubViewport" unique_id=1437979512 instance=ExtResource("2_2n1qi")]
+[node name="PlayerUI" parent="Game/CanvasLayer2/Control" unique_id=1437979512 instance=ExtResource("2_2n1qi")]
+layout_mode = 1
+scale = Vector2(1.5, 1.5)

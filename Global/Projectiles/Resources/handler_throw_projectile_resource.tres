@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ProjectileResource" format=3 uid="uid://dtc2yvypjyurt"]
+
+[ext_resource type="Script" uid="uid://ch13tt26l8qwb" path="res://Global/Projectiles/Resources/projectile_resource.gd" id="1_enf17"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_enf17"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8r1hp"]
+
+[resource]
+script = ExtResource("1_enf17")
+ID = "Throw_Slash"
+stick_to_parent = true
+is_friendly = false
+damage = 2.0
+collision_shape = SubResource("CircleShape2D_enf17")
+hurtbox_shape = SubResource("CircleShape2D_8r1hp")
+sprite_texture = "uid://nrtwtn7mxc6p"
+parent_offset = Vector2(-12, 0)
+metadata/_custom_type_script = "uid://ch13tt26l8qwb"

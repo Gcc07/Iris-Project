@@ -8,6 +8,8 @@ WORK ON:
 	Working on a dialogue system
 	Adding more enemies
 	Projectile Behavoir / Customization
+	Downlash Attack
+	Wall Stab (slow fall)
 	
 	Fixing:
 	
@@ -15,11 +17,16 @@ WORK ON:
 	
 	Bug now where enemies get stuck in stun after being attack in succession
 	
+	Bug where camera during cutscene doesn't go between subject and player, only player
+	
 	Making:
 	
 	Backwards drawing of REN:J-E
 	
 LORE
+
+ 	Lutia, capitol of greed
+
 	ROMULUS
 	
 	ROMULUS Exo Neuroplacent:JUSTICE-ENTITY -> Ren-J:E

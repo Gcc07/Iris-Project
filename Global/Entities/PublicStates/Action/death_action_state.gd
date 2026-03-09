@@ -9,5 +9,8 @@ func enter() -> void:
 	actionAnimations.play(str(parent.entity_id)+"Action/" + animation_name)
 	sprite.material.set_shader_parameter("shade_color", Color(1.0, 1.0, 1.0))
 
+func process(_delta: float) -> State:
+	return null
+
 func kill():
 	parent.queue_free()
