@@ -47,8 +47,7 @@ metadata/_custom_type_script = "uid://dwm1drlnk2yp1"
 script = ExtResource("2_cr1dt")
 type = 3
 sound_effect = ExtResource("7_x33k7")
-pitch_scale = 0.55
-pitch_randomness = 0.23
+pitch_scale = 0.75
 metadata/_custom_type_script = "uid://dwm1drlnk2yp1"
 
 [sub_resource type="Resource" id="Resource_ox3qb"]

@@ -22,4 +22,5 @@ speed = 100.0
 spin_speed = 3.0
 modulate_color = Color(255, 255, 255, 255)
 remove_upon_being_parried = true
+stun_projectile_owner_upon_being_parried = false
 metadata/_custom_type_script = "uid://ch13tt26l8qwb"

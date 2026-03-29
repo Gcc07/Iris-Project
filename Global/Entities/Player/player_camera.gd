@@ -90,9 +90,9 @@ var trigger_cutscene: Callable = func(zoom_amount: Vector2, targets : Array ):
 	var y_total = 0
 	
 	for t in targets:
-		x_total+= target.global_position.x
-		y_total+= target.global_position.y
-	
+		x_total += t.global_position.x
+		y_total += t.global_position.y
+
 	var x_average = x_total / targets.size()
 	var y_average = y_total / targets.size()
 	

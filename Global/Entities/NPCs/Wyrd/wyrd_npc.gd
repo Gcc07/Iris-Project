@@ -45,7 +45,8 @@ func _interact():
 	# Cutscene Effect
 	var camera = get_viewport().get_camera_2d()
 	var ZOOM_AMOUNT = Vector2(1.5,1.5)
-	var targets : Array = [self, get_tree().get_nodes_in_group("Player")]
+	var player = get_tree().get_first_node_in_group("player")
+	var targets : Array = [self, player]
 	camera.trigger_cutscene.call(ZOOM_AMOUNT, targets)
 
 	var interaction_cancelled : Array[bool] = [false] # This is a flag. (Its an array so its mutable by the lambda function)

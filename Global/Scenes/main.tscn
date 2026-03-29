@@ -24,4 +24,4 @@ grow_vertical = 0
 
 [node name="PlayerUI" parent="Game/CanvasLayer2/Control" unique_id=1437979512 instance=ExtResource("2_2n1qi")]
 layout_mode = 1
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.75, 1.75)
